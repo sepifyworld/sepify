@@ -139,6 +139,52 @@ summary::after{content:"+";position:absolute;right:4px;top:18px;font:400 26px/1 
 details[open] summary::after{content:"–"}
 details p{padding:0 0 22px;color:var(--mute);max-width:42em}
 
+
+/* founding offer */
+.found{grid-column:1/-1;border:1px solid rgba(18,183,106,.5);border-radius:24px;padding:28px 32px;display:flex;flex-wrap:wrap;gap:20px 40px;align-items:center;justify-content:space-between;background:linear-gradient(90deg, rgba(18,183,106,.14), rgba(18,183,106,.03))}
+.found .l{flex:1 1 360px;min-width:0;display:flex;flex-direction:column;gap:10px}
+.found h3{font-size:24px;font-weight:600}
+.found p{color:var(--text)}
+.found ul{margin:0;padding:0 0 0 18px;color:var(--mute);font-size:15px;display:flex;flex-direction:column;gap:4px}
+.found .r{flex:0 1 280px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.found .price b{font:700 44px/1 var(--f-display);color:var(--white)}
+.found .price s{color:var(--soft);margin-left:8px}
+.spots{font:500 13px/1.3 var(--f-mono);letter-spacing:.06em;color:var(--green);text-transform:uppercase}
+.bar{height:8px;border-radius:4px;background:#2a2e2b;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--green)}
+
+/* contact */
+.contact{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px;border:1px solid var(--line);border-radius:24px;padding:32px;background:var(--card)}
+.contact .mail{font:600 clamp(22px,3vw,30px)/1.2 var(--f-display);color:var(--white);text-decoration:none;word-break:break-all}
+.contact .mail:hover{color:var(--green)}
+.copy{height:44px;padding:0 18px;border-radius:22px;border:1px solid #363b37;background:none;color:var(--white);font:600 15px/1 var(--f-body);cursor:pointer}
+.copy:hover{border-color:var(--green)}
+.copy:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+
+/* chat */
+.cbtn{position:fixed;z-index:40;right:max(20px, calc(env(safe-area-inset-right,0px) + 16px));bottom:max(20px, calc(env(safe-area-inset-bottom,0px) + 16px));height:56px;padding:0 20px 0 16px;border-radius:28px;border:0;background:var(--white);color:var(--ink);display:flex;align-items:center;gap:10px;font:600 15px/1 var(--f-body);cursor:pointer;box-shadow:0 10px 30px rgba(0,0,0,.45)}
+.cbtn svg{width:26px;height:26px}
+.cbtn:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+.cpanel{position:fixed;z-index:41;right:max(20px, calc(env(safe-area-inset-right,0px) + 16px));bottom:max(20px, calc(env(safe-area-inset-bottom,0px) + 16px));width:min(380px, calc(100vw - 32px));height:min(560px, calc(100dvh - 120px));background:#161816;border:1px solid #2e332f;border-radius:22px;box-shadow:0 20px 60px rgba(0,0,0,.6);display:flex;flex-direction:column;overflow:hidden}
+.chead{display:flex;align-items:center;gap:10px;padding:14px 14px 14px 18px;border-bottom:1px solid #262a27}
+.chead svg{width:26px;height:26px}
+.chead b{font:600 15px/1.2 var(--f-display);color:var(--white);flex:1}
+.chead b small{display:block;font:500 12px/1.3 var(--f-body);color:var(--soft)}
+.cx{width:36px;height:36px;border-radius:18px;border:0;background:#222622;color:var(--white);cursor:pointer;font-size:18px;line-height:1}
+.cx:focus-visible{outline:2px solid var(--green)}
+.clog{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px}
+.msg{max-width:85%;padding:10px 14px;border-radius:16px;font-size:15px;line-height:1.45;white-space:pre-wrap;word-wrap:break-word}
+.msg.a{background:#222622;color:var(--text);border-bottom-left-radius:6px;align-self:flex-start}
+.msg.u{background:var(--green);color:#06140d;border-bottom-right-radius:6px;align-self:flex-end}
+.msg.err{background:none;border:1px solid #4a3a2a;color:#e6b98a}
+.typing{align-self:flex-start;color:var(--soft);font-size:14px}
+.cform{display:flex;gap:8px;padding:12px;border-top:1px solid #262a27}
+.cform input{flex:1;min-width:0;height:44px;border-radius:22px;border:1px solid #2e332f;background:#111312;color:var(--white);padding:0 16px;font:400 16px/1 var(--f-body)}
+.cform input:focus{outline:none;border-color:var(--green)}
+.cform button{height:44px;padding:0 16px;border-radius:22px;border:0;background:var(--green);color:#06140d;font:600 15px/1 var(--f-body);cursor:pointer}
+.cform button:disabled{opacity:.5;cursor:default}
+.cnote{padding:0 14px 12px;font-size:11.5px;color:var(--soft);line-height:1.4}
+@media (max-width:480px){.cbtn span{display:none}.cbtn{padding:0 15px}}
 /* final cta + footer */
 .final{padding-block:96px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:24px}
 .final h2{font-size:clamp(36px,6vw,68px);font-weight:700;letter-spacing:-.035em}
@@ -159,6 +205,7 @@ footer{border-top:1px solid #1f2320}
       <a href="#how">How it works</a>
       <a href="#pricing">Pricing</a>
       <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
       <a class="btn primary" href="https://app.sepify.com" target="_blank" rel="noopener">Get started</a>
     </nav>
   </div>
@@ -222,7 +269,7 @@ footer{border-top:1px solid #1f2320}
           <div class="name"><span class="gd"></span>Sepify Shift</div>
           <div class="toggle" role="group" aria-label="Billing period">
             <button type="button" id="bm" aria-pressed="true">Monthly</button>
-            <button type="button" id="by" aria-pressed="false">Yearly</button>
+            <button type="button" id="by" aria-pressed="false">Yearly · 2 months free</button>
           </div>
           <div class="amount"><b id="amt">$39</b><span id="per">CAD per location per month, plus tax</span></div>
           <ul>
@@ -237,6 +284,23 @@ footer{border-top:1px solid #1f2320}
           <div class="big">30 days</div>
           <h3>Why a 30-day money-back guarantee?</h3>
           <p>30 days is about two pay periods. Run payroll with Sepify Shift twice, and we're confident you won't want to go back. If it's not for you, you get your money back.</p>
+        </div>
+        <div class="found" id="founding" hidden>
+          <div class="l">
+            <div class="eyebrow"><span class="gd"></span>Founding offer · first 50 businesses</div>
+            <h3>Lock in $29 a month, for as long as you stay.</h3>
+            <ul>
+              <li>$29 CAD per location per month, or $290 per year (2 months free), instead of $39 or $390. Plus tax.</li>
+              <li>Your founding price stays the same when you add locations or future Sepify products.</li>
+              <li>Future products and add-ons are charged at their regular price.</li>
+              <li>If you cancel, the founding price ends and can't be restored. The 30-day money-back guarantee still applies.</li>
+            </ul>
+          </div>
+          <div class="r">
+            <div class="price"><b>$29</b><s>$39</s></div>
+            <div id="spotsWrap" hidden><div class="spots" id="spots"></div><div class="bar" style="margin-top:8px"><i id="spotsBar"></i></div></div>
+            <a class="btn primary" style="align-self:flex-start" href="https://app.sepify.com" target="_blank" rel="noopener">Claim a founding spot</a>
+          </div>
         </div>
       </div>
     </section>
@@ -273,6 +337,18 @@ footer{border-top:1px solid #1f2320}
     </section>
   </div>
 
+  <section class="in sec" id="contact" style="padding-block:88px 0">
+    <div class="sechead">
+      <div class="eyebrow">Contact</div>
+      <h2>Talk to us.</h2>
+      <p>Questions about Sepify Shift, setting it up, or whether it fits your business? Email us and a real person will get back to you.</p>
+    </div>
+    <div class="contact">
+      <a class="mail" id="mail" href="mailto:support@sepify.com">support@sepify.com</a>
+      <button type="button" class="copy" id="copyMail">Copy email</button>
+    </div>
+  </section>
+
   <section class="in final">
     <span class="gd" style="width:18px;height:18px"></span>
     <h2>Green means go.</h2>
@@ -280,6 +356,25 @@ footer{border-top:1px solid #1f2320}
     <a class="btn primary" href="https://app.sepify.com" target="_blank" rel="noopener">Get started</a>
   </section>
 </main>
+
+
+<button type="button" class="cbtn" id="cbtn" aria-controls="cpanel" aria-expanded="false" hidden>
+  <svg viewBox="170 210 680 600" aria-hidden="true"><path fill-rule="evenodd" fill="#111111" d="M427.18,789.88 L392.59,790.00 L358.00,787.10 L337.24,783.61 L309.57,777.13 L299.19,773.93 L281.90,767.19 L254.22,752.93 L241.61,744.85 L230.01,735.99 L216.17,723.03 L201.24,706.80 L190.86,692.96 L186.83,686.04 L187.49,682.58 L191.95,678.67 L243.84,640.40 L271.52,620.48 L274.98,618.73 L278.44,619.44 L279.39,620.31 L288.81,632.61 L299.19,644.67 L309.57,654.55 L319.95,662.38 L337.30,672.20 L354.54,679.71 L368.38,684.14 L385.67,687.87 L406.43,689.96 L420.27,690.07 L441.02,687.92 L458.32,683.82 L468.70,679.63 L480.71,672.20 L489.45,663.62 L494.47,654.91 L496.68,647.99 L497.52,641.07 L496.62,630.69 L494.36,623.77 L490.25,616.85 L485.99,612.13 L479.07,606.32 L472.15,601.91 L465.24,598.41 L444.48,591.46 L347.62,568.59 L323.41,561.97 L295.73,552.61 L278.44,545.31 L264.60,537.85 L254.22,531.31 L243.84,523.58 L233.47,514.25 L226.12,506.16 L219.63,496.96 L214.81,488.86 L208.08,475.02 L203.73,461.19 L200.92,443.89 L199.99,423.14 L201.02,402.38 L204.55,385.08 L208.96,371.25 L215.10,357.41 L226.27,340.11 L238.37,326.28 L250.76,315.05 L264.60,304.91 L278.44,296.96 L299.19,287.75 L319.95,280.49 L337.24,276.08 L354.54,273.13 L389.13,270.17 L413.35,270.00 L430.64,270.72 L451.40,272.89 L472.15,276.49 L496.37,283.00 L517.12,290.81 L530.96,296.98 L544.80,304.52 L557.01,312.44 L574.92,326.28 L589.57,340.11 L601.22,353.95 L601.83,357.41 L599.68,360.87 L586.59,371.25 L544.80,406.74 L524.04,423.46 L520.58,425.50 L517.12,425.04 L496.37,403.00 L485.99,394.30 L475.61,387.43 L461.78,380.45 L451.40,376.46 L437.56,372.47 L420.27,369.55 L399.51,368.79 L382.21,369.95 L364.92,373.11 L354.54,376.36 L344.16,381.24 L334.17,388.54 L328.14,395.46 L324.37,402.38 L322.24,409.30 L321.80,419.68 L323.04,426.60 L325.93,433.51 L330.32,439.58 L333.78,442.98 L340.70,448.13 L347.62,451.96 L364.92,458.54 L375.30,461.47 L434.10,475.95 L472.15,484.38 L506.75,494.45 L517.12,498.19 L534.42,505.88 L551.72,515.14 L562.10,521.64 L572.47,529.45 L579.39,535.76 L590.35,547.67 L596.69,555.82 L604.34,568.42 L607.47,575.34 L614.07,596.10 L617.34,616.85 L618.17,634.15 L617.90,647.99 L614.07,672.20 L607.87,692.96 L601.02,706.80 L591.80,720.63 L579.39,735.34 L569.01,745.25 L555.04,755.22 L541.34,763.17 L527.50,769.93 L517.12,774.09 L496.37,780.51 L479.07,784.14 L458.32,787.37 L427.18,789.88Z"/><circle cx="735.17" cy="324.60" r="78" fill="#12B76A"/></svg>
+  <span>Ask about Sepify Shift</span>
+</button>
+<div class="cpanel" id="cpanel" role="dialog" aria-label="Sepify assistant" hidden>
+  <div class="chead">
+    <svg viewBox="170 210 680 600" aria-hidden="true"><path fill-rule="evenodd" fill="#FFFFFF" d="M427.18,789.88 L392.59,790.00 L358.00,787.10 L337.24,783.61 L309.57,777.13 L299.19,773.93 L281.90,767.19 L254.22,752.93 L241.61,744.85 L230.01,735.99 L216.17,723.03 L201.24,706.80 L190.86,692.96 L186.83,686.04 L187.49,682.58 L191.95,678.67 L243.84,640.40 L271.52,620.48 L274.98,618.73 L278.44,619.44 L279.39,620.31 L288.81,632.61 L299.19,644.67 L309.57,654.55 L319.95,662.38 L337.30,672.20 L354.54,679.71 L368.38,684.14 L385.67,687.87 L406.43,689.96 L420.27,690.07 L441.02,687.92 L458.32,683.82 L468.70,679.63 L480.71,672.20 L489.45,663.62 L494.47,654.91 L496.68,647.99 L497.52,641.07 L496.62,630.69 L494.36,623.77 L490.25,616.85 L485.99,612.13 L479.07,606.32 L472.15,601.91 L465.24,598.41 L444.48,591.46 L347.62,568.59 L323.41,561.97 L295.73,552.61 L278.44,545.31 L264.60,537.85 L254.22,531.31 L243.84,523.58 L233.47,514.25 L226.12,506.16 L219.63,496.96 L214.81,488.86 L208.08,475.02 L203.73,461.19 L200.92,443.89 L199.99,423.14 L201.02,402.38 L204.55,385.08 L208.96,371.25 L215.10,357.41 L226.27,340.11 L238.37,326.28 L250.76,315.05 L264.60,304.91 L278.44,296.96 L299.19,287.75 L319.95,280.49 L337.24,276.08 L354.54,273.13 L389.13,270.17 L413.35,270.00 L430.64,270.72 L451.40,272.89 L472.15,276.49 L496.37,283.00 L517.12,290.81 L530.96,296.98 L544.80,304.52 L557.01,312.44 L574.92,326.28 L589.57,340.11 L601.22,353.95 L601.83,357.41 L599.68,360.87 L586.59,371.25 L544.80,406.74 L524.04,423.46 L520.58,425.50 L517.12,425.04 L496.37,403.00 L485.99,394.30 L475.61,387.43 L461.78,380.45 L451.40,376.46 L437.56,372.47 L420.27,369.55 L399.51,368.79 L382.21,369.95 L364.92,373.11 L354.54,376.36 L344.16,381.24 L334.17,388.54 L328.14,395.46 L324.37,402.38 L322.24,409.30 L321.80,419.68 L323.04,426.60 L325.93,433.51 L330.32,439.58 L333.78,442.98 L340.70,448.13 L347.62,451.96 L364.92,458.54 L375.30,461.47 L434.10,475.95 L472.15,484.38 L506.75,494.45 L517.12,498.19 L534.42,505.88 L551.72,515.14 L562.10,521.64 L572.47,529.45 L579.39,535.76 L590.35,547.67 L596.69,555.82 L604.34,568.42 L607.47,575.34 L614.07,596.10 L617.34,616.85 L618.17,634.15 L617.90,647.99 L614.07,672.20 L607.87,692.96 L601.02,706.80 L591.80,720.63 L579.39,735.34 L569.01,745.25 L555.04,755.22 L541.34,763.17 L527.50,769.93 L517.12,774.09 L496.37,780.51 L479.07,784.14 L458.32,787.37 L427.18,789.88Z"/><circle cx="735.17" cy="324.60" r="78" fill="#12B76A"/></svg>
+    <b>Sepify assistant<small>AI · answers about Sepify Shift</small></b>
+    <button type="button" class="cx" id="cx" aria-label="Close chat">×</button>
+  </div>
+  <div class="clog" id="clog" aria-live="polite"></div>
+  <form class="cform" id="cform" autocomplete="off">
+    <input id="cin" name="q" maxlength="500" placeholder="Ask a question…" aria-label="Your question">
+    <button type="submit" id="csend">Send</button>
+  </form>
+  <div class="cnote">AI assistant. It can make mistakes, so for anything important email support@sepify.com. Messages are processed by our AI provider; please don't share personal or payment details.</div>
+</div>
 
 <footer>
   <div class="in foot">
@@ -294,7 +389,65 @@ footer{border-top:1px solid #1f2320}
   function set(y){
     bm.setAttribute('aria-pressed', y?'false':'true'); by.setAttribute('aria-pressed', y?'true':'false');
     amt.textContent = y ? '$390' : '$39';
-    per.textContent = y ? 'CAD per location per year, plus tax' : 'CAD per location per month, plus tax';
+    per.textContent = y ? 'CAD per location per year, plus tax. That\'s 2 months free.' : 'CAD per location per month, plus tax';
+  }
+
+  // contact copy
+  var mail = 'support@sepify.com';
+  document.getElementById('copyMail').addEventListener('click', function(){
+    var b = this;
+    function done(ok){ b.textContent = ok ? 'Copied' : mail; setTimeout(function(){ b.textContent = 'Copy email'; }, 2000); }
+    try { navigator.clipboard.writeText(mail).then(function(){ done(true); }, function(){ done(false); }); } catch(e){ done(false); }
+  });
+
+  // live site settings: founding offer and chat (served by /api/site)
+  fetch('/api/site').then(function(r){ return r.ok ? r.json() : null; }).then(function(s){
+    if (!s) return;
+    if (s.email && s.email !== mail){
+      mail = s.email; var m = document.getElementById('mail'); m.textContent = mail; m.href = 'mailto:' + mail;
+    }
+    if (s.offer){
+      document.getElementById('founding').hidden = false;
+      if (s.offer.remaining != null){
+        document.getElementById('spotsWrap').hidden = false;
+        document.getElementById('spots').textContent = s.offer.remaining === 1 ? 'Only 1 founding spot left' : 'Only ' + s.offer.remaining + ' founding spots left';
+        document.getElementById('spotsBar').style.width = Math.round((1 - s.offer.remaining / s.offer.total) * 100) + '%';
+      }
+    }
+    if (s.chat) setupChat();
+  }).catch(function(){});
+
+  function setupChat(){
+    var btn = document.getElementById('cbtn'), panel = document.getElementById('cpanel'), log = document.getElementById('clog'),
+        form = document.getElementById('cform'), input = document.getElementById('cin'), send = document.getElementById('csend');
+    var history = [];
+    btn.hidden = false;
+    function add(cls, text){ var d = document.createElement('div'); d.className = 'msg ' + cls; d.textContent = text; log.appendChild(d); log.scrollTop = log.scrollHeight; return d; }
+    function open(){
+      panel.hidden = false; btn.hidden = true; btn.setAttribute('aria-expanded','true');
+      if (!log.children.length) add('a', "Hi! I can answer questions about Sepify Shift, the time clock for your team. How do you track your staff's hours today?");
+      input.focus();
+    }
+    function close(){ panel.hidden = true; btn.hidden = false; btn.setAttribute('aria-expanded','false'); btn.focus(); }
+    btn.addEventListener('click', open);
+    document.getElementById('cx').addEventListener('click', close);
+    panel.addEventListener('keydown', function(e){ if (e.key === 'Escape') close(); });
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var q = input.value.trim(); if (!q || send.disabled) return;
+      input.value = ''; add('u', q); history.push({role:'user', content:q});
+      send.disabled = true;
+      var t = document.createElement('div'); t.className = 'typing'; t.textContent = 'Typing…'; log.appendChild(t); log.scrollTop = log.scrollHeight;
+      fetch('/api/chat', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({messages: history.slice(-12)})})
+        .then(function(r){ return r.json().then(function(j){ return {ok:r.ok, j:j}; }); })
+        .then(function(x){
+          t.remove();
+          if (x.ok && x.j.reply){ add('a', x.j.reply); history.push({role:'assistant', content:x.j.reply}); }
+          else { add('a err', (x.j && x.j.error) || 'Something went wrong. Please email ' + mail + '.'); history.pop(); }
+        })
+        .catch(function(){ t.remove(); add('a err', 'Something went wrong. Please email ' + mail + '.'); history.pop(); })
+        .then(function(){ send.disabled = false; input.focus(); });
+    });
   }
   bm.addEventListener('click', function(){ set(false); });
   // first tap or key press on the page also turns on the tour's sound
