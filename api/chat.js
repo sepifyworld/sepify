@@ -48,7 +48,7 @@ export default async function handler(req, res) {
       const r = await fetch('https://api.anthropic.com/v1/messages', {
         method: 'POST',
         headers: {
-          'x-api-key': process.env.ANTHROPIC_API_KEY,
+          'x-api-key': process.env.ANTHROPIC_API_KEY.trim(),
           'anthropic-version': '2023-06-01',
           'content-type': 'application/json',
         },
@@ -61,7 +61,7 @@ export default async function handler(req, res) {
         }),
       });
       const j = await r.json();
-      if (!r.ok) throw new Error(j?.error?.message || 'AI error');
+      if (!r.ok) throw new Error(`${r.status} ${j?.error?.type || ''} ${j?.error?.message || 'AI error'}`);
       reply = (j.content || []).filter((c) => c.type === 'text').map((c) => c.text).join('\n').trim();
     } else if (process.env.OPENAI_API_KEY) {
       const r = await fetch('https://api.openai.com/v1/chat/completions', {
@@ -83,6 +83,7 @@ export default async function handler(req, res) {
     res.status(200).json({ reply: reply || "Sorry, I didn't catch that. Could you ask another way?" });
   } catch (e) {
     console.error('chat error', e.message);
-    res.status(502).json({ error: 'The assistant is unavailable right now. Please try again shortly.' });
+    const debug = req.headers['x-sepify-debug'] === '1' ? { detail: String(e.message).slice(0, 200) } : {};
+    res.status(502).json({ error: 'The assistant is unavailable right now. Please try again shortly.', ...debug });
   }
 }
