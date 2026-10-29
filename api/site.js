@@ -10,5 +10,6 @@ export default async function handler(req, res) {
       ? { remaining: offer.showCount ? offer.remaining : null, total: offer.total }
       : null,
     chat: !!(process.env.ANTHROPIC_API_KEY || process.env.OPENAI_API_KEY),
+    contact: !!process.env.RESEND_API_KEY,
   });
 }

@@ -39,7 +39,7 @@ export default async function handler(req, res) {
     'FACT SHEET:',
     FACTS,
     offer.active ? OFFER_FACTS : 'There is no founding offer or discount available right now.',
-    email ? `CONTACT: the Sepify team can be reached at ${email}.` : 'CONTACT: visitors can reach the Sepify team through the contact section on sepify.com.',
+    email ? `CONTACT: the Sepify team can be reached at ${email} or through the contact page at sepify.com/contact.` : 'CONTACT: visitors can reach the Sepify team through the contact section on sepify.com.',
   ].join('\n');
 
   try {
