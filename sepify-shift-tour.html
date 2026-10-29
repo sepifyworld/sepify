@@ -356,16 +356,23 @@ body.render .stage{width:100vw;height:100vh;aspect-ratio:auto;border-radius:0;bo
 .ch:hover{color:var(--white)}
 
 /* ---------- portrait / phone layout ---------- */
+/* tighter layout: bigger devices, text closer */
+.scene{grid-template-columns:33% 1fr;padding:0 3.2em;gap:1.8em}
+.cap h2{font-size:3.4em}
+.cap p{font-size:1.5em}
+.tablet{width:52em}
+.phone{width:21.5em}
+.laptop{width:58em}
 @container (max-width: 640px){
   .stage{aspect-ratio:9/15.5;font-size:2.6cqw;border-radius:18px}
-  .scene{grid-template-columns:1fr;grid-template-rows:auto 1fr;align-items:start;padding:3.4em 2.4em 2em;gap:1.6em}
+  .scene{grid-template-columns:1fr;grid-template-rows:auto auto;align-content:center;align-items:start;padding:2.6em 2.2em;gap:2.4em}
   .cap{gap:.8em}
-  .cap h2{font-size:2.5em}
-  .cap p{font-size:1.25em}
+  .cap h2{font-size:2.9em}
+  .cap p{font-size:1.4em}
   .cap .note{font-size:1em}
   .dev{align-items:center}
   .tablet{width:100%;font-size:.82em}
-  .phone{width:17em;font-size:1em}
+  .phone{width:21em;font-size:1em}
   .laptop{width:100%;font-size:.7em}
   .view{gap:1.6em;padding:1.2em}
   .center{align-items:center}
