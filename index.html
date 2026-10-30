@@ -100,6 +100,12 @@ section{scroll-margin-top:80px}
 .feat h3{font-size:18px;font-weight:600;display:flex;align-items:center;gap:10px;letter-spacing:-.01em}
 .feat p{color:var(--mute);font-size:16px}
 
+/* tablet */
+.tabs2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+@media (max-width:860px){.tabs2{grid-template-columns:1fr}}
+.tabs2 .amount b{font-size:44px}
+.tmute{color:var(--mute);font-size:16px}
+
 /* pricing */
 .price{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:22px;align-items:stretch}
 @media (max-width:860px){.price{grid-template-columns:1fr}}
@@ -347,6 +353,26 @@ footer{border-top:1px solid #1f2320}
     </section>
   </div>
 
+  <section class="in sec" id="tablet" aria-labelledby="tab">
+    <div class="sechead">
+      <div class="eyebrow">Your tablet</div>
+      <h2 id="tab">Use yours, or get one ready to go.</h2>
+      <p>Your team punches in on a tablet at your location. You choose when you sign up.</p>
+    </div>
+    <div class="tabs2">
+      <div class="plan">
+        <div class="name">Use your own tablet</div>
+        <div class="amount"><b>Free</b></div>
+        <p class="tmute">Any recent Android tablet or iPad with a front camera and Wi-Fi, plugged in where staff clock in. A 30-second on-screen check confirms it works.</p>
+      </div>
+      <div class="plan">
+        <div class="name">Get one ready to go</div>
+        <div class="amount"><b>$179</b><span>CAD per tablet, one-time, plus tax</span></div>
+        <p class="tmute">Set up for Sepify Shift and shipped to you. Add a lockable wall mount for $69. No monthly fee, and it's yours to keep. We call to confirm your order before anything is charged.</p>
+      </div>
+    </div>
+  </section>
+
   <section class="in sec" aria-labelledby="why">
     <div class="founder">
       <blockquote>
@@ -368,7 +394,7 @@ footer{border-top:1px solid #1f2320}
         <h2>Questions owners ask.</h2>
       </div>
       <div class="faq">
-        <details><summary>Do I need special hardware?</summary><p>No. Sepify Shift runs in the browser, so any tablet with Wi-Fi works as the time clock.</p></details>
+        <details><summary>Do I need special hardware?</summary><p>No. Sepify Shift runs in the browser, so a recent Android tablet or iPad with a front camera and Wi-Fi works as the time clock. Don't have one? We can send a ready-to-go tablet for $179, plus an optional $69 wall mount.</p></details>
         <details><summary>What if the internet goes down?</summary><p>Punches are saved on the tablet and sent automatically when the connection comes back.</p></details>
         <details><summary>How does billing work?</summary><p>$39 CAD per location per month, or $390 per location per year, plus tax. You pay when you sign up, and you're covered by a 30-day money-back guarantee.</p></details>
         <details><summary>I have more than one location. How does that work?</summary><p>Each location is billed separately, and you can see all of them from one dashboard.</p></details>

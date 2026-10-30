@@ -9,7 +9,7 @@ WHAT IT DOES
 - Punch in: employees enter their own PIN on a tablet at the store, then a quick face check confirms it's really them. This stops "buddy punching" (one employee clocking in for another).
 - Face check is with consent: each employee is asked to agree on the tablet the first time. Anyone who prefers not to use it punches in with their PIN and a photo is taken at punch-in instead, so managers can still see who punched. The owner can also turn face check off.
 - The tablet does not store employees' PINs or face data.
-- The time clock runs in the browser, so a recent Android tablet or iPad with a front camera and Wi-Fi works. Most businesses use a tablet they already have.
+- The time clock runs in the browser, so a recent Android tablet or iPad with a front camera and Wi-Fi works. Businesses can use a tablet they already have (free), or ask Sepify for a ready-to-go tablet: $179 CAD per tablet, one-time, plus tax, with an optional lockable wall mount for $69. It's theirs to keep, there is no monthly fee for it, and it is not part of the subscription payment: Sepify calls to confirm the order before charging. They choose this when they sign up. Don't name any tablet brand.
 - Breaks take one tap to start and one tap to end. Break time is saved with each shift.
 - The owner sees who is on the clock and who is on break at each location, live, from their phone.
 - Timesheets: daily, weekly and pay-period views of every shift for every employee.
