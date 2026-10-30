@@ -82,7 +82,6 @@ export default async function handler(req, res) {
     res.status(200).json({ reply: reply || "I can only speak to Sepify Shift: simple PIN punch-in on any tablet, a live view of who's working from your phone, and payroll-ready hours, with a 30-day money-back guarantee. How do you track your team's hours today?" });
   } catch (e) {
     console.error('chat error', e.message);
-    const debug = req.headers['x-sepify-debug'] === '1' ? { detail: String(e.message).slice(0, 200) } : {};
-    res.status(502).json({ error: 'The assistant is unavailable right now. Please try again shortly.', ...debug });
+    res.status(502).json({ error: 'The assistant is unavailable right now. Please try again shortly.' });
   }
 }
