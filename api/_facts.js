@@ -29,6 +29,7 @@ PRICE
 - $39 CAD per location per month, or $390 per location per year (two months free), plus tax.
 - Customers pay when they sign up. There is no free trial.
 - 30-day money-back guarantee: cancel within 30 days of the first payment for a full refund. That's about two pay periods to try it with real payroll.
+- The guarantee applies once per business, to its first subscription only. A business, owner, card, email, phone or address that already got a guarantee refund (even under another account) can still cancel, but isn't refunded again. It covers the subscription only, not tablets or wall mounts. Full details are in the Terms at app.sepify.com/terms.
 - Cancel anytime online from the Billing page.
 
 WHERE: available in Canada, outside Quebec for now.
