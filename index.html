@@ -6,12 +6,12 @@
 <meta name="theme-color" content="#111111">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <meta property="og:title" content="Sepify Shift · Punch in. Punch out. Payroll ready.">
-<meta property="og:description" content="The time clock for your team. Punch in with a PIN on any tablet, take breaks in one tap, and export hours for payroll.">
+<meta property="og:description" content="The time clock for your team. Punch in with a PIN and face check on any tablet, take breaks in one tap, and export hours for payroll.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://sepify.com/">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>Sepify Shift · Time clock for your team</title>
-<meta name="description" content="Sepify Shift is the time clock for your team. Punch in with a PIN on any tablet, take breaks in one tap, and get hours ready for payroll.">
+<meta name="description" content="Sepify Shift is the time clock for your team. Punch in with a PIN and face check on any tablet, take breaks in one tap, and get hours ready for payroll.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Sora:wght@500;600;700&family=Figtree:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
@@ -183,6 +183,18 @@ details p{padding:0 0 22px;color:var(--mute);max-width:42em}
 .cform button{height:44px;padding:0 16px;border-radius:22px;border:0;background:var(--green);color:#06140d;font:600 15px/1 var(--f-body);cursor:pointer}
 .cform button:disabled{opacity:.5;cursor:default}
 .cnote{padding:0 14px 12px;font-size:11.5px;color:var(--soft);line-height:1.4}
+.msg a{color:inherit;text-decoration:underline;text-underline-offset:2px;font-weight:600}
+.msg.a a{color:var(--green)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;padding:0 12px 4px}
+.chips[hidden]{display:none}
+.chip{height:36px;padding:0 14px;border-radius:18px;border:1px solid #2e332f;background:#111312;color:var(--white);font:500 14px/1 var(--f-body);cursor:pointer}
+.chip:hover{border-color:var(--green)}
+.chip:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+.chip.go{background:var(--green);border-color:var(--green);color:#06140d;font-weight:600}
+@media (max-width:600px){
+  .cpanel{left:0;right:0;bottom:0;top:auto;width:100%;height:min(560px, calc(var(--vvh, 100dvh) - 12px));max-height:calc(var(--vvh, 100dvh) - 12px);border-radius:22px 22px 0 0;border-left:0;border-right:0;border-bottom:0;transform:translateY(calc(-1 * var(--kb, 0px)))}
+  .cform{padding-bottom:max(12px, env(safe-area-inset-bottom,0px))}
+}
 @media (max-width:480px){.cbtn span{display:none}.cbtn{padding:0 15px}}
 
 /* product lockup: s. mark + Shift */
@@ -261,7 +273,7 @@ footer{border-top:1px solid #1f2320}
         <p>Here's what a shift looks like on Sepify Shift. No paper, no punch cards, no adding up hours at the end of the week.</p>
       </div>
       <ol class="steps">
-        <li><span class="n">01</span><span class="t">7:45 AM</span><h3>Punch in with a PIN</h3><p>Employees enter their PIN on the store tablet and tap the dot. Green means they're on the clock.</p></li>
+        <li><span class="n">01</span><span class="t">7:45 AM</span><h3>PIN + face check</h3><p>Employees enter their PIN, then a quick face check confirms it's really them. No more clocking in for a friend. Green means they're on the clock.</p></li>
         <li><span class="n">02</span><span class="t">12:30 PM</span><h3>Breaks in one tap</h3><p>Start and end a break on the same tablet. Break time is saved with the shift.</p></li>
         <li><span class="n">03</span><span class="t">Any time</span><h3>See who's working</h3><p>Check every location from your phone: who's on the clock and who's on break, right now.</p></li>
         <li><span class="n">04</span><span class="t">Payday</span><h3>Export for payroll</h3><p>Hours are totalled for each person with breaks taken out. Review them and export for payroll.</p></li>
@@ -276,11 +288,14 @@ footer{border-top:1px solid #1f2320}
     </div>
     <div class="feat">
       <div><h3><span class="gd"></span>Tablet punch-in</h3><p>Runs in the browser on a tablet you already have. Each employee has their own PIN.</p></div>
+      <div><h3><span class="gd"></span>Face check</h3><p>A quick face check after the PIN stops buddy punching. Employees agree first, and anyone who prefers not to punches in with their PIN and a photo instead.</p></div>
       <div><h3><span class="gd"></span>Live view</h3><p>See who's on the clock and who's on break at each location.</p></div>
       <div><h3><span class="gd"></span>Breaks</h3><p>One tap to start, one tap to end. Break time is saved with every shift.</p></div>
       <div><h3><span class="gd"></span>Timesheets</h3><p>Daily, weekly and pay-period views of every shift, for every employee.</p></div>
       <div><h3><span class="gd"></span>Manager edits</h3><p>Fix a missed punch or adjust a shift from the dashboard.</p></div>
       <div><h3><span class="gd"></span>Payroll export</h3><p>Export each pay period's hours, ready for payroll.</p></div>
+      <div><h3><span class="gd"></span>Works offline</h3><p>If the internet drops, punches are saved on the tablet and sent when it comes back.</p></div>
+      <div><h3><span class="gd"></span>Every location</h3><p>Manage all your locations from one dashboard. Each business's data stays private to it.</p></div>
     </div>
   </section>
 
@@ -385,8 +400,15 @@ footer{border-top:1px solid #1f2320}
     <button type="button" class="cx" id="cx" aria-label="Close chat">×</button>
   </div>
   <div class="clog" id="clog" aria-live="polite"></div>
+  <div class="chips" id="chips">
+    <button type="button" class="chip" data-q="How much does it cost?">Pricing</button>
+    <button type="button" class="chip" data-q="How does punch-in work for my staff?">How it works</button>
+    <button type="button" class="chip" data-q="I have more than one location. Does it work for that?">Multiple locations</button>
+    <button type="button" class="chip" data-q="What if it's not for me?">Money-back guarantee</button>
+    <button type="button" class="chip go" data-go="1">Get started</button>
+  </div>
   <form class="cform" id="cform" autocomplete="off">
-    <input id="cin" name="q" maxlength="500" placeholder="Ask a question…" aria-label="Your question">
+    <input id="cin" name="q" maxlength="500" placeholder="Type a question…" aria-label="Your question" enterkeyhint="send">
     <button type="submit" id="csend">Send</button>
   </form>
   <div class="cnote">AI assistant. It can make mistakes, so for anything important email support@sepify.com. Messages are processed by our AI provider; please don't share personal or payment details.</div>
@@ -461,23 +483,59 @@ footer{border-top:1px solid #1f2320}
 
   function setupChat(){
     var btn = document.getElementById('cbtn'), panel = document.getElementById('cpanel'), log = document.getElementById('clog'),
-        form = document.getElementById('cform'), input = document.getElementById('cin'), send = document.getElementById('csend');
+        form = document.getElementById('cform'), input = document.getElementById('cin'), send = document.getElementById('csend'),
+        chips = document.getElementById('chips');
     var history = [];
+    var SIGNUP = 'https://app.sepify.com/signup';
+    // Only put the cursor in the box on computers. On phones and tablets that would pop the keyboard
+    // up over the chat before the visitor has decided to type.
+    var desktop = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
     btn.hidden = false;
-    function add(cls, text){ var d = document.createElement('div'); d.className = 'msg ' + cls; d.textContent = text; log.appendChild(d); log.scrollTop = log.scrollHeight; return d; }
+
+    // keep the chat sheet above the phone keyboard when the visitor does type
+    var vv = window.visualViewport;
+    function fit(){
+      if (!vv || panel.hidden) return;
+      var kb = Math.max(0, window.innerHeight - vv.height - vv.offsetTop);
+      panel.style.setProperty('--vvh', vv.height + 'px');
+      panel.style.setProperty('--kb', kb + 'px');
+      log.scrollTop = log.scrollHeight;
+    }
+    if (vv){ vv.addEventListener('resize', fit); vv.addEventListener('scroll', fit); }
+
+    // show replies as text, with sign-up links and emails made tappable
+    function add(cls, text){
+      var d = document.createElement('div'); d.className = 'msg ' + cls;
+      var re = /(https?:\/\/[^\s)]+|app\.sepify\.com(?:\/[^\s).,]*)?|sepify\.com\/contact|[\w.+-]+@sepify\.com)/g, last = 0, m;
+      while ((m = re.exec(text))){
+        if (m.index > last) d.appendChild(document.createTextNode(text.slice(last, m.index)));
+        var u = m[0].replace(/[.,!?]+$/, ''), a = document.createElement('a');
+        a.textContent = u;
+        if (u.indexOf('@') > 0) a.href = 'mailto:' + u;
+        else if (/^app\.sepify\.com\/?$/.test(u)) a.href = SIGNUP;
+        else a.href = /^https?:/.test(u) ? u : 'https://' + u;
+        if (/^https?:\/\/(app\.)?sepify\.com|^(app\.)?sepify\.com|@/.test(u) === false) { a.target = '_blank'; a.rel = 'noopener'; }
+        d.appendChild(a); last = m.index + u.length;
+      }
+      if (last < text.length) d.appendChild(document.createTextNode(text.slice(last)));
+      log.appendChild(d); log.scrollTop = log.scrollHeight; return d;
+    }
     function open(){
       panel.hidden = false; btn.hidden = true; btn.setAttribute('aria-expanded','true');
-      if (!log.children.length) add('a', "Hi! I can answer questions about Sepify Shift, the time clock for your team. How do you track your staff's hours today?");
-      input.focus();
+      if (!log.children.length) add('a', "Hi! I'm the Sepify assistant. Sepify Shift lets your staff punch in with a PIN and a quick face check on any tablet, and you see who's working from your phone. Tap a question below, or tell me about your business.");
+      if (desktop) input.focus(); else panel.focus && panel.focus({preventScroll:true});
+      fit();
     }
-    function close(){ panel.hidden = true; btn.hidden = false; btn.setAttribute('aria-expanded','false'); btn.focus(); }
+    function close(){ if (document.activeElement === input) input.blur(); panel.hidden = true; btn.hidden = false; btn.setAttribute('aria-expanded','false'); btn.focus(); }
+    panel.setAttribute('tabindex','-1');
     btn.addEventListener('click', open);
     document.getElementById('cx').addEventListener('click', close);
     panel.addEventListener('keydown', function(e){ if (e.key === 'Escape') close(); });
-    form.addEventListener('submit', function(e){
-      e.preventDefault();
-      var q = input.value.trim(); if (!q || send.disabled) return;
-      input.value = ''; add('u', q); history.push({role:'user', content:q});
+
+    function ask(q){
+      if (!q || send.disabled) return;
+      chips.hidden = true;
+      add('u', q); history.push({role:'user', content:q});
       send.disabled = true;
       var t = document.createElement('div'); t.className = 'typing'; t.textContent = 'Typing…'; log.appendChild(t); log.scrollTop = log.scrollHeight;
       fetch('/api/chat', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({messages: history.slice(-12)})})
@@ -488,7 +546,19 @@ footer{border-top:1px solid #1f2320}
           else { add('a err', (x.j && x.j.error) || 'Something went wrong. Please email ' + mail + '.'); history.pop(); }
         })
         .catch(function(){ t.remove(); add('a err', 'Something went wrong. Please email ' + mail + '.'); history.pop(); })
-        .then(function(){ send.disabled = false; input.focus(); });
+        .then(function(){ send.disabled = false; if (desktop) input.focus(); });
+    }
+    chips.addEventListener('click', function(e){
+      var c = e.target.closest('.chip'); if (!c) return;
+      if (c.dataset.go){ window.location.href = SIGNUP; return; }
+      ask(c.dataset.q);
+    });
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var q = input.value.trim(); if (!q) return;
+      input.value = '';
+      if (!desktop) input.blur();   // drop the keyboard so the visitor can read the answer
+      ask(q);
     });
   }
   bm.addEventListener('click', function(){ set(false); });

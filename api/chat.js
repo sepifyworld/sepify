@@ -79,7 +79,7 @@ export default async function handler(req, res) {
     } else {
       return res.status(503).json({ error: 'Chat is not set up yet.' });
     }
-    res.status(200).json({ reply: reply || "I can only speak to Sepify Shift: simple PIN punch-in on any tablet, a live view of who's working from your phone, and payroll-ready hours, with a 30-day money-back guarantee. How do you track your team's hours today?" });
+    res.status(200).json({ reply: reply || "I can only speak to Sepify Shift: PIN and face check punch-in on any tablet, a live view of who's working from your phone, and payroll-ready hours, with a 30-day money-back guarantee. How do you track your team's hours today?" });
   } catch (e) {
     console.error('chat error', e.message);
     res.status(502).json({ error: 'The assistant is unavailable right now. Please try again shortly.' });
