@@ -1,6 +1,84 @@
 {
   "cleanUrls": true,
   "headers": [
-    { "source": "/(.*)", "headers": [ { "key": "X-Content-Type-Options", "value": "nosniff" }, { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" } ] }
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/collections/:path*",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/products/:path*",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/pages/:path*",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/policies/:path*",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/blogs/:path*",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/cart",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/cart/:path*",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/account",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/account/:path*",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/checkout",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/checkouts/:path*",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/search",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/apps/:path*",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/discount/:path*",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/collections",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/products",
+      "destination": "/api/gone"
+    }
   ]
 }
