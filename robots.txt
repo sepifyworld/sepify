@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
-Sitemap: https://sepify.com/sitemap.xml
+Sitemap: https://www.sepify.com/sitemap.xml
