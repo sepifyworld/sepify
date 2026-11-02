@@ -597,3 +597,30 @@ header.scrolled{background:rgba(255,255,255,.95)!important;box-shadow:0 8px 24px
 .fcdevice .scan{gap:10px}
 .js .fcdevice:not(.on) .its,.js .fcdevice:not(.on) .wb{opacity:0}
 .js .fcdevice .its,.js .fcdevice .wb{transition:opacity .4s ease 1.5s}
+
+/* face scan instead of the circle; success reads "You're clocked in" */
+.k-cam{color:rgba(255,255,255,.6)}
+.k-cam.k-done{background:radial-gradient(120% 90% at 50% 40%,#183a29,#0f1a14);color:#32d583}
+.k-cam.k-done .br{border-color:#32d583}
+.k-tick{position:absolute;right:-8px;bottom:-8px;width:30px;height:30px;border-radius:50%;background:#12B76A;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 4px #0a0a0a;transform:scale(.4);opacity:0;transition:transform .35s cubic-bezier(.2,1.5,.4,1) .15s,opacity .2s ease .15s}
+.k-tick svg{width:17px;height:17px}
+.story[data-step="2"] .k-tick,.story[data-step="3"] .k-tick{transform:none;opacity:1}
+.k-ok .k-its{margin-top:16px!important;font-size:21px;color:#32d583}
+.k-ok .k-name{margin-top:2px!important}
+.fscan{position:relative;width:128px;height:142px;border-radius:18px;background:radial-gradient(120% 90% at 50% 40%,#2f3330,#121412);color:rgba(255,255,255,.6);transition:background .4s ease 1.4s,color .4s ease 1.4s}
+.fscan svg{position:absolute;inset:14px 12px 0;width:auto;height:auto}
+.fscan .br{position:absolute;width:18px;height:18px;border:2.5px solid #12B76A}
+.fscan .tl{left:9px;top:9px;border-right:0;border-bottom:0;border-top-left-radius:6px}
+.fscan .tr{right:9px;top:9px;border-left:0;border-bottom:0;border-top-right-radius:6px}
+.fscan .bl{left:9px;bottom:9px;border-right:0;border-top:0;border-bottom-left-radius:6px}
+.fscan .brr{right:9px;bottom:9px;border-left:0;border-top:0;border-bottom-right-radius:6px}
+.fline{position:absolute;left:14px;right:14px;top:16px;height:2px;border-radius:1px;background:#12B76A;box-shadow:0 0 12px 3px rgba(18,183,106,.55);opacity:0}
+.fcdevice.on .fline{animation:fscan 1.2s ease-in-out .2s 1 forwards}
+@keyframes fscan{0%{top:16px;opacity:0}15%{opacity:1}85%{opacity:1}100%{top:122px;opacity:0}}
+.fcdevice.on .fscan,.no-js .fscan{background:radial-gradient(120% 90% at 50% 40%,#183a29,#0f1a14);color:#32d583}
+.fscan .k-tick{transition-delay:1.5s}
+.fcdevice.on .fscan .k-tick{transform:none;opacity:1}
+.fcdevice .its{font-size:22px}
+@media (prefers-reduced-motion:reduce){.fcdevice .fline{animation:none}.fscan,.fscan .k-tick{transition:none}}
+.k-cam.k-done,.fscan{overflow:visible}
+.k-cam .k-tick svg,.fscan .k-tick svg{position:static;inset:auto;width:17px;height:17px}
