@@ -35,6 +35,8 @@ PRICE
 
 WHERE: available in Canada, outside Quebec for now.
 
+CONTACT: email support@sepify.com or use the contact page at sepify.com/contact. The Sepify team usually replies the same day, and by the next business day at the latest.
+
 SIGN UP: at app.sepify.com/signup. It takes a few minutes: create an account, add the business and first location, pay, then add staff and connect a tablet.
 
 NOT INCLUDED (say plainly that Sepify Shift doesn't do this yet):

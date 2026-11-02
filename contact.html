@@ -271,7 +271,7 @@ footer{border-top:1px solid #1f2320}
         <p class="cfmsg" id="cfStatus" role="status" hidden></p>
       </form>
       <aside class="cside">
-        <div><h3>Questions before you start</h3><p>How it works, pricing, whether it fits your team. We reply to every message.</p></div>
+        <div><h3>Questions before you start</h3><p>How it works, pricing, whether it fits your team. We usually reply the same day, and by the next business day at the latest.</p></div>
         <div><h3>Already a customer</h3><p>Help with your time clock, timesheets or billing.</p></div>
       </aside>
     </div>
@@ -345,7 +345,7 @@ footer{border-top:1px solid #1f2320}
       fetch('/api/contact', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({name:name, business:biz, email:email, message:msg})})
         .then(function(r){ return r.json().then(function(j){ return {ok:r.ok, j:j}; }); })
         .then(function(x){
-          if (x.ok){ f.reset(); show("Thanks, your message is sent. We'll reply to " + email + ' soon.'); }
+          if (x.ok){ f.reset(); show("Thanks, your message is sent. We'll reply to " + email + ' within one business day.'); }
           else show((x.j && x.j.error) || 'Something went wrong. Please email ' + mail + '.', true);
         })
         .catch(function(){ show('Something went wrong. Please email ' + mail + '.', true); })
