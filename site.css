@@ -591,3 +591,9 @@ header.scrolled{background:rgba(255,255,255,.95)!important;box-shadow:0 8px 24px
 .tourbox iframe{width:100%;height:100%;border:0;display:block}
 .tourx{position:absolute;top:-48px;right:0;width:40px;height:40px;border-radius:20px;border:0;background:#fff;color:#111;font-size:24px;line-height:1;cursor:pointer}
 .tourx:focus-visible{outline:2px solid #12B76A;outline-offset:3px}
+
+.fcdevice .its{font:700 20px/1 var(--f-display);color:#32d583}
+.fcdevice .wb{font-size:14px;color:rgba(255,255,255,.6);margin-top:-6px}
+.fcdevice .scan{gap:10px}
+.js .fcdevice:not(.on) .its,.js .fcdevice:not(.on) .wb{opacity:0}
+.js .fcdevice .its,.js .fcdevice .wb{transition:opacity .4s ease 1.5s}
