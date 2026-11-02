@@ -23,3 +23,12 @@ The Sepify Shift marketing site, deployed on Vercel. Plain static files plus two
 | `CONTACT_EMAIL` | Optional. Defaults to support@sepify.com | Contact email |
 
 Never put keys in the website files. Only in Vercel's settings.
+
+## Pages and SEO (Nov 2026)
+- `restaurant-time-clock.html`: landing page for restaurant time clock searches (sepify.com/restaurant-time-clock)
+- `site.css`: shared styles for the homepage and the restaurant page
+- `og.png` (share image), `logo.png` (used in Google's structured data), `apple-touch-icon.png`
+- Structured data: Organization, WebSite and SoftwareApplication on the homepage; FAQPage on both pages (built from each page's FAQ, so keep them matching); BreadcrumbList on the restaurant page
+- Add new pages to `sitemap.xml`
+
+**When the offer changes** (e.g. the 14-day trial replacing the 30-day guarantee), update it in all of these places: the homepage hero line, pricing card and guarantee box, FAQ "How does billing work?", final call to action, the chat chip, the homepage SoftwareApplication offer; `restaurant-time-clock.html` hero line, pricing section and final call to action; and `api/_facts.js`.
