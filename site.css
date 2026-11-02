@@ -582,3 +582,12 @@ header.scrolled{background:rgba(255,255,255,.95)!important;box-shadow:0 8px 24px
 .end-again:focus-visible,.end-btn:focus-visible{outline:2px solid #12B76A;outline-offset:3px}
 .story[data-scene="4"] .sq-dots i{width:8px!important;background:var(--line)!important}
 @media (prefers-reduced-motion:reduce){.story[data-step="1"] .scanline{animation:none}}
+
+/* tour pop-up */
+.tourdlg{border:0;padding:0;background:transparent;width:min(1000px,94vw);max-width:none;overflow:visible}
+.tourdlg::backdrop{background:rgba(10,12,10,.78);backdrop-filter:blur(4px)}
+.tourbox{width:100%;aspect-ratio:16/10.3;border-radius:20px;overflow:hidden;background:#161816;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+@media (max-width:700px){.tourbox{aspect-ratio:9/18.2;max-height:86vh}}
+.tourbox iframe{width:100%;height:100%;border:0;display:block}
+.tourx{position:absolute;top:-48px;right:0;width:40px;height:40px;border-radius:20px;border:0;background:#fff;color:#111;font-size:24px;line-height:1;cursor:pointer}
+.tourx:focus-visible{outline:2px solid #12B76A;outline-offset:3px}
