@@ -36,5 +36,5 @@ FOUNDING OFFER (first 50 businesses only, while spots remain)
 - The founding price is locked in for as long as the subscription stays active, including locations added later.
 - Future Sepify products and add-ons are charged at their regular price.
 - If the customer cancels, the founding price ends and can't be restored.
-- The 30-day money-back guarantee still applies.
+- The 14-day free trial still applies.
 `;
