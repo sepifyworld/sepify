@@ -37,7 +37,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Sora:wght@500;600;700&family=Figtree:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
 <link rel="stylesheet" href="/site.css">
 <script type="application/ld+json" id="ld-faq">
-{"@context": "https://schema.org", "@type": "FAQPage", "url": "https://www.sepify.com/", "mainEntity": [{"@type": "Question", "name": "How does Sepify Shift stop buddy punching?", "acceptedAnswer": {"@type": "Answer", "text": "Every punch needs the employee's own PIN plus a quick face check on the tablet, so a coworker can't clock in for them. Face check is optional for each employee: they agree first, and anyone who prefers not to punches in with their PIN and a photo instead."}}, {"@type": "Question", "name": "Is Sepify Shift a good time clock for restaurants?", "acceptedAnswer": {"@type": "Answer", "text": "It was built in one. Our founder runs restaurants on it every day: kitchen and front-of-house staff punch in on one tablet, breaks are tracked, and every location shows up on one dashboard. It works for cafés, bakeries, retail and other shift teams too."}}, {"@type": "Question", "name": "Does Sepify Shift do employee scheduling?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Build each week's schedule by position, drag shifts to move them, or let the AI assistant draft the week for you from your recent weeks. Then adjust anything you like."}}, {"@type": "Question", "name": "Do I need special hardware?", "acceptedAnswer": {"@type": "Answer", "text": "No. Sepify Shift runs in the browser, so a recent Android tablet or iPad with a front camera and Wi-Fi works as the time clock. Don't have one? We can send a ready-to-go tablet for $179, plus an optional $69 wall mount."}}, {"@type": "Question", "name": "What if the internet goes down?", "acceptedAnswer": {"@type": "Answer", "text": "Punches are saved on the tablet and sent automatically when the connection comes back."}}, {"@type": "Question", "name": "How does billing work?", "acceptedAnswer": {"@type": "Answer", "text": "$39 CAD per location per month, or $390 per location per year, plus tax. You pay when you sign up, and your first subscription is covered by a 30-day money-back guarantee, once per business (terms apply)."}}, {"@type": "Question", "name": "I have more than one location. How does that work?", "acceptedAnswer": {"@type": "Answer", "text": "Each location is billed separately, and you can see all of them from one dashboard."}}, {"@type": "Question", "name": "Is my data private?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Each business's data is kept separate from every other business."}}, {"@type": "Question", "name": "Where is Sepify Shift available?", "acceptedAnswer": {"@type": "Answer", "text": "In Canada, outside Quebec for now."}}]}
+{"@context": "https://schema.org", "@type": "FAQPage", "url": "https://www.sepify.com/", "mainEntity": [{"@type": "Question", "name": "How does Sepify Shift stop buddy punching?", "acceptedAnswer": {"@type": "Answer", "text": "Every punch needs the employee's own PIN plus a quick face check on the tablet, so a coworker can't clock in for them. Face check is optional for each employee: they agree first, and anyone who prefers not to punches in with their PIN and a photo instead."}}, {"@type": "Question", "name": "What if an employee types the wrong PIN?", "acceptedAnswer": {"@type": "Answer", "text": "For employees who use face check, the face has to match the person whose PIN was entered. If it doesn't, the punch isn't recorded, so hours never end up under the wrong name."}}, {"@type": "Question", "name": "Is Sepify Shift a good time clock for restaurants?", "acceptedAnswer": {"@type": "Answer", "text": "It was built in one. Our founder runs restaurants on it every day: kitchen and front-of-house staff punch in on one tablet, breaks are tracked, and every location shows up on one dashboard. It works for cafés, bakeries, retail and other shift teams too."}}, {"@type": "Question", "name": "Does Sepify Shift do employee scheduling?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Build each week's schedule by position, drag shifts to move them, or let the AI assistant draft the week for you from your recent weeks. Then adjust anything you like."}}, {"@type": "Question", "name": "Do I need special hardware?", "acceptedAnswer": {"@type": "Answer", "text": "No. Sepify Shift runs in the browser, so a recent Android tablet or iPad with a front camera and Wi-Fi works as the time clock. Don't have one? We can send a ready-to-go tablet for $179, plus an optional $69 wall mount."}}, {"@type": "Question", "name": "What if the internet goes down?", "acceptedAnswer": {"@type": "Answer", "text": "Punches are saved on the tablet and sent automatically when the connection comes back."}}, {"@type": "Question", "name": "How does billing work?", "acceptedAnswer": {"@type": "Answer", "text": "$39 CAD per location per month, or $390 per location per year, plus tax. You pay when you sign up, and your first subscription is covered by a 30-day money-back guarantee, once per business (terms apply)."}}, {"@type": "Question", "name": "I have more than one location. How does that work?", "acceptedAnswer": {"@type": "Answer", "text": "Each location is billed separately, and you can see all of them from one dashboard."}}, {"@type": "Question", "name": "Is my data private?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Each business's data is kept separate from every other business."}}, {"@type": "Question", "name": "Where is Sepify Shift available?", "acceptedAnswer": {"@type": "Answer", "text": "In Canada, outside Quebec for now."}}]}
 </script>
 </head>
 <body>
@@ -49,6 +49,7 @@
     </a>
     <nav class="links" aria-label="Main">
       <a href="#how">How it works</a>
+      <a href="#face-check">Face check</a>
       <a href="#pricing">Pricing</a>
       <a href="#faq">FAQ</a>
       <a href="/contact">Contact</a>
@@ -81,6 +82,54 @@
 
   <section class="in tour" id="tour" aria-label="Sepify Shift tour">
     <iframe class="frame" id="tourFrame" allow="autoplay" src="/sepify-shift-tour#embed" title="Sepify Shift tour: punch in, breaks, live view, clock out and payroll" loading="lazy"></iframe>
+  </section>
+
+  <section class="in sec" id="face-check" aria-labelledby="fc">
+    <div class="fcgrid">
+      <div class="fctext reveal">
+        <div class="eyebrow"><span class="gd"></span>Face check</div>
+        <h2 id="fc">Every punch is the right person.</h2>
+        <p class="fclead">After an employee enters their PIN, a quick face check on the tablet confirms it's really them. If the face doesn't match the PIN, the punch isn't recorded. It's included in every plan, not an add-on.</p>
+        <ol class="fcsteps">
+          <li><b>1</b><span><strong>Enter PIN.</strong> Each employee has their own.</span></li>
+          <li><b>2</b><span><strong>Look at the tablet.</strong> The face check runs right away.</span></li>
+          <li><b>3</b><span><strong>On the clock.</strong> Green means the punch is saved, at the exact minute.</span></li>
+        </ol>
+      </div>
+      <div class="fcdevice reveal" aria-hidden="true">
+        <div class="tab">
+          <div class="tabbar"><span>Downtown</span><span>7:45 AM</span></div>
+          <div class="scan">
+            <div class="ring"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="56" fill="none" stroke="#2a2e2b" stroke-width="4"/><circle class="arc" cx="60" cy="60" r="56" fill="none" stroke="#12B76A" stroke-width="4" stroke-linecap="round" stroke-dasharray="352" stroke-dashoffset="352" transform="rotate(-90 60 60)"/></svg>
+              <svg class="facegl" viewBox="0 0 64 64"><circle cx="32" cy="24" r="12" fill="none" stroke="#a3aca6" stroke-width="2.5"/><path d="M10 58c2-12 11-18 22-18s20 6 22 18" fill="none" stroke="#a3aca6" stroke-width="2.5" stroke-linecap="round"/></svg>
+              <span class="ok"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#06140d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+            <div class="who">Hi Maya</div>
+            <div class="state"><span class="gd"></span>On the clock · 7:45 AM</div>
+          </div>
+          <div class="pinrow"><i></i><i></i><i></i><i></i></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fcwins reveal-kids">
+      <div class="fcwin"><h3>No more buddy punching</h3><p>A coworker can't clock in for someone who's running late. Their face won't match the PIN.</p></div>
+      <div class="fcwin"><h3>No more wrong-PIN mix-ups</h3><p>Typed a coworker's PIN by mistake? The face check catches it, so hours never land on the wrong person.</p></div>
+      <div class="fcwin"><h3>Hours you can trust on payday</h3><p>Every punch is tied to the right person at the exact minute, so there's nothing to argue about when you run payroll.</p></div>
+    </div>
+
+    <div class="fcprivacy reveal">
+      <div class="fcpl">
+        <h3>Fair to your team, by design</h3>
+        <p>Face check is used only with each employee's agreement, and nobody is forced to use it.</p>
+      </div>
+      <ul>
+        <li>Each employee agrees on the tablet before face check is used</li>
+        <li>Anyone who prefers not to punches in with their PIN and a photo instead</li>
+        <li>You can turn face check off for your business at any time</li>
+        <li>The tablet doesn't store PINs or face data</li>
+      </ul>
+    </div>
   </section>
 
   <div class="band">
@@ -315,6 +364,7 @@
       </div>
       <div class="faq reveal">
         <details><summary>How does Sepify Shift stop buddy punching?</summary><p>Every punch needs the employee's own PIN plus a quick face check on the tablet, so a coworker can't clock in for them. Face check is optional for each employee: they agree first, and anyone who prefers not to punches in with their PIN and a photo instead.</p></details>
+        <details><summary>What if an employee types the wrong PIN?</summary><p>For employees who use face check, the face has to match the person whose PIN was entered. If it doesn't, the punch isn't recorded, so hours never end up under the wrong name.</p></details>
         <details><summary>Is Sepify Shift a good time clock for restaurants?</summary><p>It was built in one. Our founder runs restaurants on it every day: kitchen and front-of-house staff punch in on one tablet, breaks are tracked, and every location shows up on one dashboard. It works for cafés, bakeries, retail and other shift teams too.</p></details>
         <details><summary>Does Sepify Shift do employee scheduling?</summary><p>Yes. Build each week's schedule by position, drag shifts to move them, or let the AI assistant draft the week for you from your recent weeks. Then adjust anything you like.</p></details>
         <details><summary>Do I need special hardware?</summary><p>No. Sepify Shift runs in the browser, so a recent Android tablet or iPad with a front camera and Wi-Fi works as the time clock. Don't have one? We can send a ready-to-go tablet for $179, plus an optional $69 wall mount.</p></details>

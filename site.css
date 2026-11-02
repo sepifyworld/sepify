@@ -312,3 +312,53 @@ header.scrolled{box-shadow:0 10px 30px rgba(0,0,0,.35);background:rgba(17,17,17,
   .bfpanel.show{animation:none}
   .btn:hover,.steps li:hover,.bacard.new:hover{transform:none}
 }
+
+/* face check section */
+.fcgrid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:48px;align-items:center}
+@media (max-width:900px){.fcgrid{grid-template-columns:1fr;gap:36px}.tab{width:min(300px,100%)}}
+.fctext{display:flex;flex-direction:column;gap:18px}
+.fctext h2{font-size:clamp(34px,5vw,56px);line-height:1.04;font-weight:700;letter-spacing:-.03em}
+.fclead{color:var(--text);font-size:19px;max-width:34em}
+.fcsteps{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-direction:column;gap:12px}
+.fcsteps li{display:flex;gap:14px;align-items:center}
+.fcsteps b{flex:none;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(18,183,106,.14);color:var(--green);font:600 14px/1 var(--f-mono)}
+.fcsteps span{color:var(--mute)}
+.fcsteps strong{color:var(--white);font-weight:600}
+.fcdevice{display:flex;justify-content:center}
+.tab{width:min(360px,100%);aspect-ratio:3/4;border-radius:30px;background:#0b0c0b;border:10px solid #232723;box-shadow:0 30px 80px rgba(0,0,0,.5),0 0 0 1px #2e332f;display:flex;flex-direction:column;padding:18px;box-sizing:border-box}
+.tabbar{display:flex;justify-content:space-between;font:500 12px/1 var(--f-mono);color:var(--soft);letter-spacing:.06em}
+.scan{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px}
+.ring{position:relative;width:150px;height:150px}
+.ring>svg:first-child{width:100%;height:100%}
+.facegl{position:absolute;inset:34px;width:auto;height:auto}
+.ok{position:absolute;right:6px;bottom:6px;width:40px;height:40px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 6px #0b0c0b;transform:scale(1)}
+.ok svg{width:22px;height:22px}
+.who{font:600 26px/1.1 var(--f-display);color:var(--white)}
+.state{display:flex;align-items:center;gap:8px;color:var(--green);font-weight:600;font-size:15px}
+.pinrow{display:flex;justify-content:center;gap:12px;padding-bottom:6px}
+.pinrow i{width:12px;height:12px;border-radius:50%;background:var(--green)}
+/* the ring fills and the check pops in once, when the section comes into view */
+.js .fcdevice .arc{transition:stroke-dashoffset 1.3s cubic-bezier(.2,.7,.2,1) .3s}
+.js .fcdevice.on .arc,.fcdevice .arc{stroke-dashoffset:0}
+.js .fcdevice:not(.on) .arc{stroke-dashoffset:352}
+.js .fcdevice .ok,.js .fcdevice .who,.js .fcdevice .state{transition:opacity .4s ease 1.5s, transform .4s cubic-bezier(.2,1.4,.4,1) 1.5s}
+.js .fcdevice:not(.on) .ok{opacity:0;transform:scale(.4)}
+.js .fcdevice:not(.on) .who,.js .fcdevice:not(.on) .state{opacity:0;transform:translateY(6px)}
+.fcwins{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+@media (max-width:860px){.fcwins{grid-template-columns:1fr}}
+.fcwin{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.fcwin h3{font-size:20px;font-weight:600;line-height:1.2;display:flex;gap:10px;align-items:flex-start}
+.fcwin h3::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--green);flex:none;margin-top:7px}
+.fcwin p{color:var(--mute);font-size:16px}
+.fcprivacy{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:24px 40px;align-items:start;border:1px solid rgba(18,183,106,.45);background:linear-gradient(180deg, rgba(18,183,106,.09), rgba(18,183,106,.02));border-radius:24px;padding:30px 32px}
+@media (max-width:820px){.fcprivacy{grid-template-columns:1fr;padding:26px}}
+.fcpl h3{font-size:22px;font-weight:600;line-height:1.2}
+.fcpl p{color:var(--mute);margin-top:8px}
+.fcprivacy ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.fcprivacy li{display:flex;gap:12px;align-items:baseline;color:var(--text)}
+.fcprivacy li::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--green);flex:none;transform:translateY(-2px)}
+@media (prefers-reduced-motion:reduce){
+  .js .fcdevice .arc,.js .fcdevice .ok,.js .fcdevice .who,.js .fcdevice .state{transition:none}
+  .js .fcdevice:not(.on) .arc{stroke-dashoffset:0}
+  .js .fcdevice:not(.on) .ok,.js .fcdevice:not(.on) .who,.js .fcdevice:not(.on) .state{opacity:1;transform:none}
+}
