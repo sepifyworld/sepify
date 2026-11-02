@@ -72,48 +72,55 @@
     </div>
     <p class="fine">$39 CAD per location per month, plus tax · 30-day money-back guarantee (first subscription, <a href="https://app.sepify.com/terms" style="color:inherit;text-decoration:underline">terms apply</a>)</p>
     </div>
-    <div class="scene" aria-hidden="true">
-      <div class="sc-glow"></div>
-      <div class="sc-tab">
-        <div class="sc-bar"><span>Downtown</span><span>9:00 AM</span></div>
-        <div class="sc-states">
-          <div class="st st1">
-            <p class="st-t">Enter your PIN</p>
-            <div class="pin"><i></i><i></i><i></i><i></i></div>
-            <div class="keys"><b>1</b><b>2</b><b>3</b><b>4</b><b>5</b><b>6</b><b>7</b><b>8</b><b>9</b><b class="ghost"></b><b>0</b><b class="ghost"></b></div>
+    <div class="story" id="story" data-scene="1" data-step="0" aria-hidden="true">
+      <div class="sq-glow"></div>
+      <div class="sq-q">
+        <p data-for="1">Tired of miscounted hours?</p>
+        <p data-for="2">Scheduling stressing you out?</p>
+        <p data-for="3">Payroll eating your night?</p>
+      </div>
+
+      <div class="sq-screen">
+        <!-- scene 1: punch in with face check -->
+        <div class="pn pn1">
+          <div class="pn-top"><span>Downtown</span><span>9:00 AM</span></div>
+          <div class="p1a"><p class="lbl">Enter your PIN</p><div class="pin"><i></i><i></i><i></i><i></i></div></div>
+          <div class="p1b"><div class="sqring"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="52" fill="none" stroke="#2a2e2b" stroke-width="6"/><circle class="spin" cx="60" cy="60" r="52" fill="none" stroke="#12B76A" stroke-width="6" stroke-linecap="round" stroke-dasharray="80 260"/></svg><svg class="fg" viewBox="0 0 64 64"><circle cx="32" cy="24" r="12" fill="none" stroke="#a3aca6" stroke-width="2.5"/><path d="M10 58c2-12 11-18 22-18s20 6 22 18" fill="none" stroke="#a3aca6" stroke-width="2.5" stroke-linecap="round"/></svg></div><p class="lbl">Checking it's you…</p></div>
+          <div class="p1c"><div class="sqok"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#06140d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><p class="big">Hi Alex</p><p class="grn">On the clock · 9:00 AM</p></div>
+        </div>
+
+        <!-- scene 2: one tap, AI drafts the week -->
+        <div class="pn pn2">
+          <div class="pn-top"><span>Schedule</span><span>Next week</span></div>
+          <div class="wk">
+            <div class="wr"><span>Mon</span><b><i style="--l:5%;--w:45%"></i><i class="k" style="--l:52%;--w:43%"></i></b></div>
+            <div class="wr"><span>Tue</span><b><i style="--l:5%;--w:50%"></i><i class="k" style="--l:58%;--w:37%"></i></b></div>
+            <div class="wr"><span>Wed</span><b><i class="k" style="--l:12%;--w:42%"></i><i style="--l:57%;--w:38%"></i></b></div>
+            <div class="wr"><span>Thu</span><b><i style="--l:5%;--w:48%"></i><i class="k" style="--l:56%;--w:39%"></i></b></div>
+            <div class="wr"><span>Fri</span><b><i style="--l:8%;--w:40%"></i><i style="--l:50%;--w:45%"></i></b></div>
           </div>
-          <div class="st st2">
-            <div class="scanring"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="54" fill="none" stroke="#2a2e2b" stroke-width="5"/><circle class="spin" cx="60" cy="60" r="54" fill="none" stroke="#12B76A" stroke-width="5" stroke-linecap="round" stroke-dasharray="90 250"/></svg><svg class="fg" viewBox="0 0 64 64"><circle cx="32" cy="24" r="12" fill="none" stroke="#a3aca6" stroke-width="2.5"/><path d="M10 58c2-12 11-18 22-18s20 6 22 18" fill="none" stroke="#a3aca6" stroke-width="2.5" stroke-linecap="round"/></svg></div>
-            <p class="st-t">Face check…</p>
+          <div class="aibtn"><span class="t1">✦ Build with AI</span><span class="t2">Building your week…</span><span class="t3">✓ Week drafted</span></div>
+        </div>
+
+        <!-- scene 3: hours added up, one tap to export -->
+        <div class="pn pn3">
+          <div class="pn-top"><span>Payroll</span><span>Nov 1 – 14</span></div>
+          <div class="hrs">
+            <div class="hr"><span>Alex</span><b>38.5 h</b></div>
+            <div class="hr"><span>Jordan</span><b>31.0 h</b></div>
+            <div class="hr"><span>Sam</span><b>40.0 h</b></div>
+            <div class="hr tot"><span>Total, breaks taken out</span><b>109.5 h</b></div>
           </div>
-          <div class="st st3">
-            <div class="okbig"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#06140d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <p class="st-h">Hi Alex</p>
-            <p class="st-g"><span class="gd"></span>On the clock · 9:00 AM</p>
-          </div>
+          <div class="expbtn"><span class="t1">Export for payroll</span><span class="t3">✓ Payroll file ready</span></div>
         </div>
       </div>
 
-      <div class="sc-cards">
-      <div class="sc-card sc-sched">
-        <div class="sc-head"><b>This week</b><span class="ai">✦ Built with AI</span></div>
-        <div class="sc-grid">
-          <span>Mon</span><div class="tr"><i style="--l:8%;--w:46%;--d:.2s"></i><i class="b" style="--l:52%;--w:40%;--d:.35s"></i></div>
-          <span>Tue</span><div class="tr"><i style="--l:4%;--w:52%;--d:.5s"></i><i class="c" style="--l:60%;--w:34%;--d:.65s"></i></div>
-          <span>Wed</span><div class="tr"><i class="b" style="--l:14%;--w:44%;--d:.8s"></i><i style="--l:58%;--w:36%;--d:.95s"></i></div>
-          <span>Thu</span><div class="tr"><i style="--l:6%;--w:50%;--d:1.1s"></i><i class="b" style="--l:56%;--w:38%;--d:1.25s"></i></div>
-          <span>Fri</span><div class="tr"><i class="c" style="--l:10%;--w:40%;--d:1.4s"></i><i style="--l:50%;--w:46%;--d:1.55s"></i></div>
-        </div>
+      <div class="sq-a">
+        <p data-for="1">Every punch is checked, so every hour is right.</p>
+        <p data-for="2">Tap once. The AI drafts your week.</p>
+        <p data-for="3">Hours added up. Export in one tap.</p>
       </div>
-
-      <div class="sc-card sc-pay">
-        <div class="sc-head"><b>Payroll</b><span class="muted">Nov 1 – 14</span></div>
-        <div class="sc-num">412.5 <small>hours</small></div>
-        <div class="sc-row"><span class="tick">✓</span>Breaks taken out</div>
-        <div class="sc-prog"><i></i></div>
-        <div class="sc-btn">Export ready</div>
-      </div>
-      </div>
+      <div class="sq-dots"><i data-go="1"></i><i data-go="2"></i><i data-go="3"></i></div>
     </div>
   </section>
 
@@ -645,6 +652,26 @@
     });
   });
 
+
+  // hero story: three short scenes (problem, then Sepify fixing it), one after another
+  (function(){
+    var st=document.getElementById('story'); if(!st) return;
+    var pin=st.querySelector('.pin');
+    var still=window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var steps=[[0,0],[1600,1],[2800,2],[3700,3]], LEN=5800, timers=[], scene=1;
+    function clear(){ timers.forEach(clearTimeout); timers=[]; }
+    function play(n){
+      clear(); scene=n; st.dataset.scene=n;
+      if(still){ st.dataset.step=3; return; }
+      steps.forEach(function(x){ timers.push(setTimeout(function(){
+        st.dataset.step=x[1];
+        if(n===1 && x[1]===0){ pin.classList.remove('go'); void pin.offsetWidth; timers.push(setTimeout(function(){ pin.classList.add('go'); },250)); }
+      }, x[0])); });
+      timers.push(setTimeout(function(){ play(n%3+1); }, LEN));
+    }
+    st.querySelectorAll('.sq-dots i').forEach(function(d){ d.addEventListener('click', function(){ play(+d.dataset.go); }); });
+    play(1);
+  })();
   bm.addEventListener('click', function(){ set(false); });
   // first tap or key press on the page also turns on the tour's sound
   var fr=document.getElementById('tourFrame'), sent=false;
