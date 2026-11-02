@@ -1,4 +1,4 @@
-// Contact form: emails the message to the Sepify inbox through Resend.
+// Contact form (contact page and the in-chat form): emails the message to the Sepify inbox through Resend.
 // Needs RESEND_API_KEY and a verified sending domain in Resend. Until then the page opens the visitor's email app instead.
 const hits = new Map();
 function limited(ip) {
@@ -22,6 +22,9 @@ export default async function handler(req, res) {
   const business = String(b.business || '').trim().slice(0, 120);
   const email = String(b.email || '').trim().slice(0, 160);
   const message = String(b.message || '').trim().slice(0, 2000);
+  const phone = String(b.phone || '').replace(/[^\d+()\-.\s]/g, '').trim().slice(0, 30);
+  const fromChat = b.source === 'chat';
+  const transcript = String(b.transcript || '').trim().slice(0, 4000);
   if (!name || !message || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return res.status(400).json({ error: 'Please add your name, a valid email and a message.' });
   }
@@ -36,9 +39,9 @@ export default async function handler(req, res) {
         from,
         to: [to],
         reply_to: email,
-        subject: `Website message from ${name}${business ? ` (${business})` : ''}`,
-        text: `${message}\n\n${name}${business ? `\n${business}` : ''}\n${email}`,
-        html: `<p>${esc(message).replace(/\n/g, '<br>')}</p><p>${esc(name)}${business ? `<br>${esc(business)}` : ''}<br>${esc(email)}</p>`,
+        subject: `${fromChat ? 'Website chat' : 'Website message'} from ${name}${business ? ` (${business})` : ''}`,
+        text: `${message}\n\n${name}${business ? `\n${business}` : ''}\n${email}${phone ? `\n${phone}` : ''}${transcript ? `\n\n--- Chat before the message ---\n${transcript}` : ''}`,
+        html: `<p>${esc(message).replace(/\n/g, '<br>')}</p><p>${esc(name)}${business ? `<br>${esc(business)}` : ''}<br>${esc(email)}${phone ? `<br>${esc(phone)}` : ''}</p>${transcript ? `<hr><p style="color:#555"><b>Chat before the message</b><br>${esc(transcript).replace(/\n/g, '<br>')}</p>` : ''}`,
       }),
     });
     if (!r.ok) throw new Error(await r.text());

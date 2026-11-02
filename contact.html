@@ -186,6 +186,15 @@ details p{padding:0 0 22px;color:var(--mute);max-width:42em}
 .cnote{padding:0 14px 12px;font-size:11.5px;color:var(--soft);line-height:1.4}
 .msg a{color:inherit;text-decoration:underline;text-underline-offset:2px;font-weight:600}
 .msg.a a{color:var(--green)}
+.ccard{align-self:stretch;display:flex;flex-direction:column;gap:8px;padding:14px;border-radius:16px;background:#1a1d1b;border:1px solid #2e332f}
+.ccard b{font:600 15px/1.3 var(--f-display);color:var(--white)}
+.ccard input,.ccard textarea{font:400 16px/1.35 var(--f-body);color:var(--white);background:#111312;border:1px solid #2e332f;border-radius:10px;padding:10px 12px;width:100%;box-sizing:border-box;resize:vertical}
+.ccard input:focus,.ccard textarea:focus{outline:none;border-color:var(--green)}
+.ccard [aria-invalid="true"]{border-color:#c9774a}
+.ccard button{height:44px;border-radius:22px;border:0;background:var(--green);color:#06140d;font:600 15px/1 var(--f-body);cursor:pointer}
+.ccard button:disabled{opacity:.5;cursor:default}
+.ccard small{font-size:12px;color:var(--soft)}
+.ccard .cerr{margin:0;font-size:13px;color:#e6b98a}
 .chips{display:flex;flex-wrap:wrap;gap:8px;padding:0 12px 4px}
 .chips[hidden]{display:none}
 .chip{height:36px;padding:0 14px;border-radius:18px;border:1px solid #2e332f;background:#111312;color:var(--white);font:500 14px/1 var(--f-body);cursor:pointer}
@@ -271,7 +280,7 @@ footer{border-top:1px solid #1f2320}
         <p class="cfmsg" id="cfStatus" role="status" hidden></p>
       </form>
       <aside class="cside">
-        <div><h3>Questions before you start</h3><p>How it works, pricing, whether it fits your team. We reply to every message.</p></div>
+        <div><h3>Questions before you start</h3><p>How it works, pricing, whether it fits your team. We usually reply the same day, and by the next business day at the latest.</p></div>
         <div><h3>Already a customer</h3><p>Help with your time clock, timesheets or billing.</p></div>
       </aside>
     </div>
@@ -295,13 +304,14 @@ footer{border-top:1px solid #1f2320}
     <button type="button" class="chip" data-q="How does punch-in work for my staff?">How it works</button>
     <button type="button" class="chip" data-q="I have more than one location. Does it work for that?">Multiple locations</button>
     <button type="button" class="chip" data-q="What if it's not for me?">Money-back guarantee</button>
+    <button type="button" class="chip" data-team="1">Talk to the team</button>
     <button type="button" class="chip go" data-go="1">Get started</button>
   </div>
   <form class="cform" id="cform" autocomplete="off">
     <input id="cin" name="q" maxlength="500" placeholder="Type a question…" aria-label="Your question" enterkeyhint="send">
     <button type="submit" id="csend">Send</button>
   </form>
-  <div class="cnote">AI assistant. It can make mistakes, so for anything important email support@sepify.com. Messages are processed by our AI provider; please don't share personal or payment details.</div>
+  <div class="cnote">AI assistant. It can make mistakes, so for anything important message our team. Chat messages are processed by our AI provider; please don't share payment details. The message form goes straight to our team.</div>
 </div>
 
 <footer>
@@ -345,7 +355,7 @@ footer{border-top:1px solid #1f2320}
       fetch('/api/contact', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({name:name, business:biz, email:email, message:msg})})
         .then(function(r){ return r.json().then(function(j){ return {ok:r.ok, j:j}; }); })
         .then(function(x){
-          if (x.ok){ f.reset(); show("Thanks, your message is sent. We'll reply to " + email + ' soon.'); }
+          if (x.ok){ f.reset(); show("Thanks, your message is sent. We'll reply to " + email + ' within one business day.'); }
           else show((x.j && x.j.error) || 'Something went wrong. Please email ' + mail + '.', true);
         })
         .catch(function(){ show('Something went wrong. Please email ' + mail + '.', true); })
@@ -410,6 +420,60 @@ footer{border-top:1px solid #1f2320}
       if (last < text.length) d.appendChild(document.createTextNode(text.slice(last)));
       log.appendChild(d); log.scrollTop = log.scrollHeight; return d;
     }
+    // in-chat message form: sent straight to the team through /api/contact (never through the AI)
+    var card = null, sentTo = null;
+    function contactCard(){
+      if (card && card.isConnected){ card.scrollIntoView({block:'nearest'}); return; }
+      if (sentTo) return;
+      var lastQ = '';
+      for (var i = history.length - 1; i >= 0; i--) if (history[i].role === 'user'){ lastQ = history[i].content; break; }
+      card = document.createElement('form'); card.className = 'ccard'; card.noValidate = true;
+      card.innerHTML =
+        '<b>Message the Sepify team</b>' +
+        '<input name="name" maxlength="100" placeholder="Your name" autocomplete="name" aria-label="Your name">' +
+        '<input name="email" type="email" maxlength="160" placeholder="Email" autocomplete="email" aria-label="Email">' +
+        '<input name="phone" type="tel" maxlength="30" placeholder="Phone (optional)" autocomplete="tel" aria-label="Phone, optional">' +
+        '<input name="business" maxlength="120" placeholder="Business name (optional)" autocomplete="organization" aria-label="Business name, optional">' +
+        '<textarea name="message" rows="3" maxlength="2000" placeholder="Your question" aria-label="Your question"></textarea>' +
+        '<p class="cerr" hidden></p>' +
+        '<button type="submit">Send to the team</button>' +
+        '<small>Sent by email to our team, not to the AI.</small>';
+      card.message.value = lastQ;
+      log.appendChild(card); log.scrollTop = log.scrollHeight;
+      if (desktop) card.name.focus();
+      var err = card.querySelector('.cerr'), sb = card.querySelector('button');
+      card.addEventListener('input', function(e){ e.target.removeAttribute('aria-invalid'); err.hidden = true; });
+      card.addEventListener('submit', function(e){
+        e.preventDefault();
+        var d = {name: card.name.value.trim(), email: card.email.value.trim(), phone: card.phone.value.trim(),
+                 business: card.business.value.trim(), message: card.message.value.trim()};
+        var bad = null;
+        [['name', !d.name], ['email', !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email)], ['message', !d.message]].forEach(function(x){
+          if (x[1]){ card[x[0]].setAttribute('aria-invalid', 'true'); if (!bad) bad = card[x[0]]; }
+        });
+        if (bad){ err.textContent = 'Please add your name, a valid email and your question.'; err.hidden = false; bad.focus(); return; }
+        if (!canSend){
+          var body = d.message + '\n\n' + d.name + (d.business ? '\n' + d.business : '') + '\n' + d.email + (d.phone ? '\n' + d.phone : '');
+          location.href = 'mailto:' + mail + '?subject=' + encodeURIComponent('Sepify Shift question' + (d.business ? ' · ' + d.business : '')) + '&body=' + encodeURIComponent(body);
+          card.remove(); add('a', 'Your email app should open with your message ready to send. If nothing opens, email us at ' + mail + '.');
+          return;
+        }
+        d.source = 'chat';
+        d.transcript = history.slice(-12).map(function(m){ return (m.role === 'user' ? 'Visitor: ' : 'Assistant: ') + m.content; }).join('\n');
+        sb.disabled = true; sb.textContent = 'Sending…';
+        fetch('/api/contact', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(d)})
+          .then(function(r){ return r.json().then(function(j){ return {ok:r.ok, j:j}; }); })
+          .then(function(x){
+            if (x.ok){
+              sentTo = d.email; card.remove();
+              add('a', "Thanks, " + d.name.split(' ')[0] + "! Your message is with the Sepify team. We usually reply the same day, and by the next business day at the latest, at " + d.email + '.');
+              history.push({role:'assistant', content:'(The visitor sent their question to the team with the message form. Do not show the form again.)'});
+            } else { err.textContent = (x.j && x.j.error) || 'Something went wrong. Please email ' + mail + '.'; err.hidden = false; }
+          })
+          .catch(function(){ err.textContent = 'Something went wrong. Please email ' + mail + '.'; err.hidden = false; })
+          .then(function(){ if (card.isConnected){ sb.disabled = false; sb.textContent = 'Send to the team'; } });
+      });
+    }
     function open(){
       panel.hidden = false; btn.hidden = true; btn.setAttribute('aria-expanded','true');
       if (!log.children.length) add('a', "Hi! I'm the Sepify assistant. Sepify Shift lets your staff punch in with a PIN and a quick face check on any tablet, and you see who's working from your phone. Tap a question below, or tell me about your business.");
@@ -432,7 +496,12 @@ footer{border-top:1px solid #1f2320}
         .then(function(r){ return r.json().then(function(j){ return {ok:r.ok, j:j}; }); })
         .then(function(x){
           t.remove();
-          if (x.ok && x.j.reply){ add('a', x.j.reply); history.push({role:'assistant', content:x.j.reply}); }
+          if (x.ok && x.j.reply){
+            var wants = /\[\[CONTACT\]\]/.test(x.j.reply), r = x.j.reply.replace(/\s*\[\[CONTACT\]\]\s*/g, ' ').trim();
+            if (r) add('a', r);
+            history.push({role:'assistant', content: r + (wants ? ' (A message form is now showing in the chat.)' : '')});
+            if (wants) contactCard();
+          }
           else { add('a err', (x.j && x.j.error) || 'Something went wrong. Please email ' + mail + '.'); history.pop(); }
         })
         .catch(function(){ t.remove(); add('a err', 'Something went wrong. Please email ' + mail + '.'); history.pop(); })
@@ -441,6 +510,11 @@ footer{border-top:1px solid #1f2320}
     chips.addEventListener('click', function(e){
       var c = e.target.closest('.chip'); if (!c) return;
       if (c.dataset.go){ window.location.href = SIGNUP; return; }
+      if (c.dataset.team){
+        chips.hidden = true;
+        add('a', "Sure. Leave your details and question below and it goes straight to the Sepify team. We usually reply the same day, and by the next business day at the latest.");
+        contactCard(); return;
+      }
       ask(c.dataset.q);
     });
     form.addEventListener('submit', function(e){
