@@ -1,0 +1,96 @@
+<!--{"path":"/time-card-calculator","out":"time-card-calculator.html","nav":"tools",
+"crumbs":[["Time card calculator","/time-card-calculator"]],
+"webapp":"Free time card calculator",
+"title":"Free Time Card Calculator with Breaks & Overtime | Sepify",
+"description":"Add up a week of employee hours in seconds. Free time card calculator with unpaid breaks, overnight shifts, overtime and gross pay. No sign-up needed."}-->
+<section class="phead" style="padding-bottom:32px">
+  <div class="wrap">
+    <!--crumbs-->
+    <h1>Time card calculator.</h1>
+    <p class="lede">Enter start and end times for each day, plus unpaid break minutes. You get total hours, overtime and gross pay for the week. Free, no sign-up, nothing is saved.</p>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="calc" id="calc">
+      <div class="cset">
+        <label>Hourly rate (CAD)<input id="rate" type="number" min="0" step="0.05" inputmode="decimal" placeholder="17.60"></label>
+        <label>Overtime after (hours a week)<input id="ot" type="number" min="0" step="1" inputmode="numeric" value="44"></label>
+        <label>Overtime rate<select id="otm"><option value="1.5" selected>1.5× (time and a half)</option><option value="2">2× (double time)</option><option value="1">No overtime pay</option></select></label>
+      </div>
+      <table>
+        <thead><tr><th>Day</th><th>Start</th><th>End</th><th>Unpaid break (min)</th><th style="text-align:right">Hours</th></tr></thead>
+        <tbody></tbody>
+      </table>
+      <div class="tot">
+        <div><small>Total hours</small><b id="tTotal">0:00</b><small id="tDec">0.00 hours</small></div>
+        <div><small>Regular hours</small><b id="tReg">0:00</b></div>
+        <div><small>Overtime hours</small><b id="tOt">0:00</b></div>
+        <div><small>Gross pay, before deductions</small><b id="tPay">—</b></div>
+      </div>
+      <div class="acts noprint"><button type="button" class="btn line small" id="cReset">Clear all</button><button type="button" class="btn line small" id="cPrint">Print this week</button></div>
+    </div>
+    <p class="fine" style="margin-top:16px;max-width:52em">Shifts that end after midnight are counted correctly. Overtime rules differ by province and job, so set the weekly threshold that applies to you and check your province’s employment standards. This tool gives an estimate, not payroll or legal advice.</p>
+  </div>
+</section>
+
+<section class="tint">
+  <div class="wrap prose">
+    <h2 style="margin-top:0">How to calculate hours on a time card</h2>
+    <p>For each shift, subtract the start time from the end time, then take off any unpaid break. Add up the days for the week’s total.</p>
+    <ul>
+      <li><b>Example:</b> 8:45 AM to 5:15 PM is 8 hours 30 minutes. Take off a 30-minute unpaid break and the shift is 8 hours.</li>
+      <li><b>Overnight shifts:</b> 10:00 PM to 6:00 AM is 8 hours. Count from the start to midnight, then from midnight to the end.</li>
+      <li><b>Overtime:</b> hours above your weekly overtime threshold are paid at the overtime rate. In Ontario, for most jobs, that’s hours over 44 in a week at 1.5 times the regular rate. Other provinces set their own rules, some daily as well as weekly.</li>
+    </ul>
+
+    <h2>Converting minutes to decimal hours</h2>
+    <p>Payroll software often wants hours as a decimal. Divide the minutes by 60.</p>
+    <div style="overflow-x:auto">
+    <table class="compare" style="max-width:520px">
+      <thead><tr><th>Minutes</th><th>Decimal hours</th><th>Minutes</th><th>Decimal hours</th></tr></thead>
+      <tbody>
+        <tr><td>5</td><td>0.08</td><td>35</td><td>0.58</td></tr>
+        <tr><td>10</td><td>0.17</td><td>40</td><td>0.67</td></tr>
+        <tr><td>15</td><td>0.25</td><td>45</td><td>0.75</td></tr>
+        <tr><td>20</td><td>0.33</td><td>50</td><td>0.83</td></tr>
+        <tr><td>25</td><td>0.42</td><td>55</td><td>0.92</td></tr>
+        <tr><td>30</td><td>0.50</td><td>60</td><td>1.00</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h2>Why exact times matter</h2>
+    <p>Rounding each punch to the nearest quarter hour, or writing “9 to 5” when the real times were 9:07 and 4:52, adds up across a team and a year. Missing breaks are the same problem in the other direction. A time clock that records the exact minute, and takes breaks out automatically, removes the guesswork from both sides.</p>
+  </div>
+</section>
+
+<section class="inkband">
+  <div class="wrap split">
+    <div>
+      <h2>Tired of adding up time cards?</h2>
+      <p class="lede" style="margin-top:20px">Sepify Shift does this for every employee, every pay period. Staff punch in on a tablet with a PIN and a quick face check, breaks are taken out automatically, and the hours export for payroll.</p>
+      <div class="ctas" style="margin-top:26px"><a class="btn go" href="https://app.sepify.com/signup" style="background:#fff;color:var(--ink)">Start free for 14 days</a><a class="btn line" href="/time-clock" style="background:transparent;color:#fff;border-color:#3a5045">See the time clock</a></div>
+    </div>
+    <div class="fx" style="background:#1a2c23"><div class="card">
+      <div class="ch"><b>Pay period</b><small>Done automatically</small></div>
+      <div class="tline"><span>Priya S.</span><span class="bar"><i style="left:0;width:86%"></i></span><span class="h">68:30</span></div>
+      <div class="tline"><span>Marco K.</span><span class="bar"><i style="left:0;width:74%"></i></span><span class="h">59:12</span></div>
+      <div class="tline"><span>Jess L.</span><span class="bar"><i style="left:0;width:62%"></i></span><span class="h">49:48</span></div>
+      <div class="tsum"><span>Total, breaks out</span><span class="num">177:30</span></div>
+    </div></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sh"><h2>Time card questions.</h2></div>
+    <div class="faq">
+      <details><summary>How do I calculate hours worked with a lunch break?</summary><div>Subtract the start time from the end time, then subtract the unpaid break. For example, 9:00 AM to 5:30 PM is 8 hours 30 minutes; with a 30-minute unpaid lunch, that’s 8 hours worked.</div></details>
+      <details><summary>How do I convert minutes to decimal hours?</summary><div>Divide the minutes by 60. 15 minutes is 0.25 hours, 30 minutes is 0.5 hours and 45 minutes is 0.75 hours. So 7 hours 45 minutes is 7.75 hours.</div></details>
+      <details><summary>How is overtime calculated in Ontario?</summary><div>For most jobs in Ontario, hours worked over 44 in a work week are overtime, paid at 1.5 times the regular rate. Some jobs have different rules, and other provinces use different thresholds, so check the employment standards that apply to you.</div></details>
+      <details><summary>Does this calculator save my data?</summary><div>No. Everything is calculated in your browser and nothing is sent or stored. Use Print to keep a copy of the week.</div></details>
+    </div>
+  </div>
+</section>
