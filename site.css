@@ -123,6 +123,14 @@ section{scroll-margin-top:80px}
 .plan ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
 .plan li{display:flex;gap:12px;align-items:baseline}
 .plan li::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--green);flex:none;transform:translateY(-2px)}
+/* two plans (Essential, Pro) */
+.price.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:860px){.price.two{grid-template-columns:1fr}}
+.price.two .guar{grid-column:1/-1}
+.price.two #plan-pro{border-color:rgba(18,183,106,.55)}
+.plan .name .tier{margin-left:6px;font:600 15px/1 var(--f-body);color:var(--gt);background:rgba(18,183,106,.12);border-radius:999px;padding:6px 10px}
+.amount s{color:var(--soft);font:600 22px/1 var(--f-display)}
+.amount s[hidden]{display:none}
 .guar{border:1px solid rgba(18,183,106,.45);background:linear-gradient(180deg, rgba(18,183,106,.10), rgba(18,183,106,.03));border-radius:24px;padding:32px;display:flex;flex-direction:column;gap:14px}
 .guar h3{font-size:24px;font-weight:600;line-height:1.2}
 .guar p{color:var(--text);font-size:17px}
