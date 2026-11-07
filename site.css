@@ -859,3 +859,98 @@ header.scrolled{background:rgba(255,255,255,.95)!important;box-shadow:0 8px 24px
 .quiz-pick h3{color:#fff;font-size:40px;margin:0}
 .quiz-pick .quiz-total{color:#e9ecea!important;font-weight:500;margin:0}
 .quiz-pick .btn{margin-top:6px}
+
+
+/* ===================================================================
+   Calmer pass (Nov 7): green back to an accent. Green surfaces are only
+   the hero circle and the founding offer. Founding offer is a ticket at
+   the top of pricing, plus a slim bar above the nav.
+   =================================================================== */
+:root{--paper2:#f3f4f1}
+/* pricing: light neutral instead of solid green */
+.field-go{background:var(--paper2);--white:#111;--mute:#59615c;--soft:#858c87;--gt:#0a8a4f;--line:#e3e6e1}
+.field-go .plan,.field-go .quiz{border:1px solid #e3e6e1;box-shadow:0 1px 2px rgba(17,17,17,.04),0 10px 30px rgba(17,17,17,.06)}
+.field-go .toggle{background:#fff;border:1px solid #e3e6e1}
+.field-go .toggle button{color:#59615c}
+.field-go .toggle button[aria-pressed="true"]{background:var(--ink-deep);color:#fff}
+.field-go .guar{background:#fff;border:1px solid #e3e6e1;--white:#111;--text:#2a2f2c;--mute:#59615c;--gt:#0a8a4f}
+.field-go .guar .big{color:#0a8a4f}
+.field-go .guar a{color:inherit}
+.plan.picked{box-shadow:0 0 0 3px var(--go),0 10px 30px rgba(17,17,17,.08)!important}
+#plan-pro.picked{box-shadow:0 0 0 3px var(--go),0 10px 30px rgba(17,17,17,.15)!important}
+/* how it works: dark neutral, green only on the times */
+.field-forest{background:#121614;--card:rgba(255,255,255,.05);--line:rgba(255,255,255,.1);--mute:#a3aca6;--soft:#6f7872;--text:#e9ecea}
+/* why switch: new way as a dark card, green only in the bullets */
+.bacard.new{background:var(--ink-deep)!important;--white:#fff;--text:#e9ecea;--gt:#3ee08f;box-shadow:0 18px 40px rgba(13,26,19,.18)}
+.bacard.new li::before{background:var(--go)}
+/* built for: neutral */
+.field-mint{background:var(--paper2)}
+/* finish: dark, green button */
+.field-final{background:var(--ink-deep);color:#fff}
+.field-final .final{--white:#fff;--soft:#a3aca6}
+.field-final .gd{background:var(--go);animation:pulse 2s ease-out infinite}
+.field-final .fine,.field-final .fine a{color:#a3aca6!important}
+.field-final .btn.primary{background:var(--go);color:#06140d}
+.field-final .btn.primary:hover{background:#16c977}
+
+/* founding offer: a ticket, first thing in pricing */
+.field-go .found{grid-column:auto;margin:0 0 26px;display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,330px);gap:0;padding:0;border:0;border-radius:28px;overflow:hidden;background:var(--ink-deep);color:#e9ecea;box-shadow:0 24px 60px rgba(13,26,19,.28);--white:#fff;--text:#e9ecea;--mute:#a3b4aa}
+.found .l{padding:36px 40px;gap:14px}
+.found-tag{display:inline-flex;align-items:center;gap:10px;align-self:flex-start;background:rgba(18,183,106,.16);color:#3ee08f;font:700 14px/1 var(--f-body);padding:9px 14px;border-radius:999px}
+.found h3{font-size:clamp(26px,3.2vw,40px);font-weight:700;letter-spacing:-.03em;line-height:1.08;color:#fff}
+.found ul{color:#a3b4aa;font-size:15px;gap:6px}
+.found .r{position:relative;flex:none;background:var(--go);color:var(--ink-deep);padding:36px 32px;display:flex;flex-direction:column;justify-content:center;gap:10px}
+/* ticket perforation between the two halves */
+.found .r::before{content:"";position:absolute;left:-1px;top:18px;bottom:18px;border-left:3px dashed rgba(13,26,19,.35)}
+.found .r::after{content:"";position:absolute;left:-14px;top:-14px;width:28px;height:28px;border-radius:50%;background:var(--paper2);box-shadow:0 calc(100% + 0px) 0 0 var(--paper2)}
+.found-was{font:600 15px/1 var(--f-body);color:#0b3a24}
+.found-was s{font-weight:700}
+.found-now{display:flex;align-items:flex-end;gap:12px;margin:2px 0}
+.found-now b{font:800 clamp(72px,8vw,104px)/.85 var(--f-display);letter-spacing:-.06em;color:var(--ink-deep)}
+.found-now span{font:600 14px/1.25 var(--f-body);color:#0b3a24;padding-bottom:6px}
+.found-save{font:700 15px/1.2 var(--f-body);color:var(--ink-deep)}
+.found .spots{font:700 14px/1.2 var(--f-body);letter-spacing:0;text-transform:none;color:var(--ink-deep)}
+.found .bar{background:rgba(13,26,19,.2)}
+.found .bar i{background:var(--ink-deep)}
+.found .btn.primary{background:var(--ink-deep);color:#fff;align-self:stretch;justify-content:center;margin-top:8px;height:52px}
+.found .btn.primary:hover{background:#000}
+@media (max-width:760px){
+  .field-go .found{grid-template-columns:1fr}
+  .found .l{padding:28px 24px}
+  .found .r{padding:28px 24px}
+  .found .r::before{left:18px;right:18px;top:-1px;bottom:auto;border-left:0;border-top:3px dashed rgba(13,26,19,.35)}
+  .found .r::after{display:none}
+}
+/* Pro card says founding price when the offer is on */
+.founding-on #plan-pro{position:relative}
+.founding-on #plan-pro::before{content:"Founding price";position:absolute;top:-13px;right:24px;background:var(--go);color:var(--ink-deep);font:700 13px/1 var(--f-body);padding:8px 12px;border-radius:999px;box-shadow:0 6px 16px rgba(18,183,106,.35)}
+
+/* slim bar above the nav */
+.offerbar{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;background:var(--ink-deep);color:#e9ecea;text-decoration:none;font:500 14px/1.3 var(--f-body);padding:10px 16px;text-align:center}
+.offerbar[hidden]{display:none}
+.offerbar b{color:#3ee08f;font-weight:700}
+.offerbar .ob-go{font-weight:700;color:#fff;text-decoration:underline;text-underline-offset:3px}
+.offerbar:hover .ob-go{color:#3ee08f}
+.offerbar:focus-visible{outline:2px solid var(--go);outline-offset:-4px}
+@media (max-width:520px){.offerbar{font-size:13px;gap:6px}}
+
+/* late arrivals in the hero */
+.lt-late{font:700 12px/1 var(--f-body);color:#3a0d08;background:#f97066;border-radius:999px;padding:6px 10px;display:none}
+.live[data-late="1"] .lt-late{display:block}
+.live[data-late="1"] .lt-check{background:#f97066}
+.live[data-late="1"] .lt-ok .lt-sub{color:#fda29b}
+.lp-alert{display:flex;gap:7px;align-items:flex-start;background:#fef3f2;border:1px solid #fecdca;color:#7a271a;border-radius:10px;padding:7px 8px;font:500 10.5px/1.3 var(--f-body);max-height:0;padding-block:0;border-width:0;opacity:0;overflow:hidden;transition:all .35s ease}
+.lp-alert b{font-weight:700;font-size:11px}
+.lp-alert .d{width:8px;height:8px;border-radius:50%;background:#f04438;flex:none;margin-top:3px}
+.live[data-alert="1"] .lp-alert{max-height:60px;padding-block:7px;border-width:1px;opacity:1}
+.live[data-sam="1"] .r-sam{opacity:1;transform:none}
+.lp-list .r-sam .d{background:#f97066}
+.lp-list li .st.late{color:#b42318;font-weight:700}
+@media (max-width:520px){.lp-alert{font-size:9.5px}.lp-alert b{font-size:10px}.lp-list li .st.late{display:inline}}
+.live[data-cap="5"] [data-c="5"]{opacity:1;transform:none}
+.lp-list li .st{white-space:nowrap}
+.field-go .found{align-items:stretch;justify-content:normal}
+.found .r::after{display:none}
+.found-now span{white-space:nowrap}
+.found .r p{color:var(--ink-deep)}
+@media (max-width:520px){.offerbar .ob-more{display:none}.offerbar{flex-wrap:nowrap}}
