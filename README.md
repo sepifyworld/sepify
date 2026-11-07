@@ -32,4 +32,6 @@ Never put keys in the website files. Only in Vercel's settings.
 
 **Plans (Nov 2026):** Essential $35 / Pro $65 per location per month ($350 / $650 a year), founding Pro $39 / $390 for the first 20. Prices live in the app and Stripe; the site only displays them.
 
-**When the offer changes** (e.g. the 14-day trial replacing the 30-day guarantee), update it in all of these places: the homepage hero line, pricing card and guarantee box, FAQ "How does billing work?", final call to action, the chat chip, the homepage SoftwareApplication offer; `restaurant-time-clock.html` hero line, pricing section and final call to action; and `api/_facts.js`.
+**Free trial (Nov 2026):** 14 days, card required, one per business; it replaced the 30-day money-back guarantee.
+
+**When the offer changes**, update it in all of these places: the homepage hero line, pricing card and guarantee box, FAQ "How does billing work?", final call to action, the chat chip, the homepage SoftwareApplication offer; `restaurant-time-clock.html` hero line, pricing section and final call to action; and `api/_facts.js`.

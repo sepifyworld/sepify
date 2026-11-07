@@ -27,5 +27,5 @@ FOUNDING OFFER (first 20 businesses only, while spots remain)
 - It's applied automatically at checkout when they choose Pro, while spots remain. No code needed.
 - The founding price is locked in for as long as the subscription stays active, including locations added later.
 - If the customer cancels, the founding price ends and can't be restored.
-- The 30-day money-back guarantee still applies.
+- The 14-day free trial still applies.
 `;
