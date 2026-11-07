@@ -196,27 +196,45 @@
       </div>
       <div class="quiz reveal" id="quiz" aria-labelledby="quizTitle">
         <div class="quiz-h">
-          <h3 id="quizTitle">What's giving you a headache?</h3>
-          <p>Tap everything that sounds like your restaurant. We'll show you how it gets fixed.</p>
+          <h3 id="quizTitle">Find what's costing you time and money</h3>
+          <p>Tell us how you run things today. We'll spot the problems and show you the fix.</p>
         </div>
-        <div class="quiz-probs" role="group" aria-label="Problems">
-          <button type="button" aria-pressed="false" data-p="buddy">Staff clock in for each other</button>
-          <button type="button" aria-pressed="false" data-p="payroll">Adding up hours before payday</button>
-          <button type="button" aria-pressed="false" data-p="missed">Forgotten punches and clock-outs</button>
-          <button type="button" aria-pressed="false" data-p="away">Not knowing who's working when I'm away</button>
-          <button type="button" aria-pressed="false" data-p="schedule">Building the schedule every week</button>
-          <button type="button" aria-pressed="false" data-p="shifts">Staff forgetting when they work</button>
-        </div>
-        <div class="quiz-loc">
-          <p>How many locations?</p>
-          <div class="opts" role="group" aria-label="Locations">
-            <button type="button" data-v="1" aria-pressed="true">1</button><button type="button" data-v="2" aria-pressed="false">2</button><button type="button" data-v="3" aria-pressed="false">3</button><button type="button" data-v="4" aria-pressed="false">4+</button>
+        <div class="quiz-qs">
+          <div class="quiz-q" data-q="clock">
+            <p>How do staff clock in today?</p>
+            <div class="opts" role="group" aria-label="How staff clock in">
+              <button type="button" data-v="paper">Paper sheet</button><button type="button" data-v="card">Punch clock</button><button type="button" data-v="pin">PIN on a POS or app</button><button type="button" data-v="trust">They tell me their hours</button>
+            </div>
+          </div>
+          <div class="quiz-q" data-q="pay">
+            <p>How do you get hours ready for payroll?</p>
+            <div class="opts" role="group" aria-label="Payroll hours">
+              <button type="button" data-v="hand">I add them up</button><button type="button" data-v="sheet">Spreadsheet</button><button type="button" data-v="pos">My POS exports them</button>
+            </div>
+          </div>
+          <div class="quiz-q" data-q="sched">
+            <p>How do you make the schedule?</p>
+            <div class="opts" role="group" aria-label="Schedule">
+              <button type="button" data-v="paper">Paper or whiteboard</button><button type="button" data-v="chat">Spreadsheet or group chat</button><button type="button" data-v="app">Another app</button><button type="button" data-v="none">We don't schedule</button>
+            </div>
+          </div>
+          <div class="quiz-q" data-q="away">
+            <p>Are you there for every shift?</p>
+            <div class="opts" role="group" aria-label="There every shift">
+              <button type="button" data-v="yes">Yes</button><button type="button" data-v="no">No, not always</button>
+            </div>
+          </div>
+          <div class="quiz-q" data-q="locs">
+            <p>How many locations?</p>
+            <div class="opts" role="group" aria-label="Locations">
+              <button type="button" data-v="1">1</button><button type="button" data-v="2">2</button><button type="button" data-v="3">3</button><button type="button" data-v="4">4+</button>
+            </div>
           </div>
         </div>
         <div class="quiz-r" id="quizResult" hidden aria-live="polite">
           <div class="quiz-fix">
-            <p class="quiz-fix-h">Here's how Sepify Shift fixes it</p>
-            <ul id="quizFixes"></ul>
+            <p class="quiz-fix-h" id="quizFound"></p>
+            <ol id="quizFixes"></ol>
           </div>
           <div class="quiz-pick">
             <p class="quiz-fix-h">Your plan</p>
@@ -749,46 +767,54 @@
     if(still){ paused=true; L.classList.add('paused'); btn.setAttribute('aria-label','Play animation'); stop(); }
     else run();
   })();
-  // problem finder: owners tap what's going wrong -> how Sepify Shift fixes each -> Essential or Pro with the monthly total
+  // problem finder: owners describe how they run things today -> we name the problems and the fix for each
+  // -> Essential or Pro (Pro when they schedule) with the monthly total
   (function(){
     var q = document.getElementById('quiz'); if (!q) return;
-    var FIX = {
-      buddy:   {t:'Face check on every punch', d:'A PIN plus a quick face check, so nobody can clock in for a friend.', pro:false},
-      payroll: {t:'Hours added up for you', d:'Every shift totalled with breaks taken out, ready to export on payday.', pro:false},
-      missed:  {t:'Fix a missed punch in seconds', d:'Managers correct a forgotten clock-out from the dashboard before payroll.', pro:false},
-      away:    {t:'Live view on your phone', d:"See who's on the clock and who's on break at every location, from anywhere.", pro:false},
-      schedule:{t:'Schedules in minutes', d:'Build the week by position, or let the AI assistant draft it from your past weeks.', pro:true},
-      shifts:  {t:'Shifts on their phone', d:'Staff see their schedule on their own phone, so nobody can say they didn\'t know.', pro:true}
+    var ans = {};
+    var CLOCK = {
+      paper: ["Anyone can write in hours for a friend, and nobody can check them.", "Every punch needs the employee's own PIN and a quick face check, at the exact minute."],
+      card:  ["A coworker can punch the card for someone running late.", "A PIN plus a face check means only the real employee can clock in."],
+      pin:   ["PINs get shared, so hours land on the wrong person.", "A quick face check after the PIN confirms it's really them."],
+      trust: ["You're paying for hours you can't confirm.", "Every punch is recorded on the tablet with a face check, so the hours are proven."]
     };
-    var picked = {}, locs = 1;
-    q.querySelectorAll('.quiz-probs button').forEach(function(b){
-      b.addEventListener('click', function(){
-        var on = b.getAttribute('aria-pressed') !== 'true';
-        b.setAttribute('aria-pressed', on ? 'true' : 'false');
-        if (on) picked[b.dataset.p] = 1; else delete picked[b.dataset.p];
-        show();
+    var PAY = {
+      hand:  ["Hours of adding up shifts before every payday, and mistakes when you're tired.", "Sepify Shift adds up every shift with breaks taken out. Review and export in one tap."],
+      sheet: ["Copying punches into a spreadsheet takes time, and errors slip in.", "Hours are totalled for you per person and pay period, ready to export."],
+      pos:   ["Forgotten clock-outs and breaks still have to be fixed by hand.", "Missed punches are easy to spot and fix from the dashboard before payroll."]
+    };
+    var SCHED = {
+      paper: ["Staff take a photo of the board, or forget when they work.", "Build the week in minutes, and staff see their shifts on their own phone.", 1],
+      chat:  ["The schedule gets lost in the chat, and shifts get missed.", "One schedule, built by position or drafted by AI, on every employee's phone.", 1],
+      app:   ["You pay for one app to schedule and another to clock in, and they don't match up.", "Schedule and time clock in one place, so planned and worked hours line up.", 1]
+    };
+    var AWAY = ["When you're not there, you don't know who actually showed up.", "See who's on the clock and who's on break at every location, from your phone."];
+    q.querySelectorAll('.quiz-q').forEach(function(box){
+      box.addEventListener('click', function(e){
+        var b = e.target.closest('button'); if (!b) return;
+        box.querySelectorAll('button').forEach(function(x){ x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+        ans[box.dataset.q] = b.dataset.v; show();
       });
-    });
-    q.querySelector('.quiz-loc').addEventListener('click', function(e){
-      var b = e.target.closest('button'); if (!b) return;
-      q.querySelectorAll('.quiz-loc button').forEach(function(x){ x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
-      locs = +b.dataset.v; show();
     });
     function show(){
-      var keys = Object.keys(FIX).filter(function(k){ return picked[k]; });
       var res = document.getElementById('quizResult');
-      if (!keys.length){ res.hidden = true; ['essential','pro'].forEach(function(x){ var c=document.getElementById('plan-'+x); if(c) c.classList.remove('picked'); }); return; }
-      var pro = keys.some(function(k){ return FIX[k].pro; }), t = pro ? 'pro' : 'essential';
-      var ul = document.getElementById('quizFixes'); ul.innerHTML = '';
-      keys.forEach(function(k){
-        var li = document.createElement('li'), b = document.createElement('b'), sp = document.createElement('span');
-        b.textContent = FIX[k].t; sp.textContent = FIX[k].d;
-        if (FIX[k].pro){ var tag = document.createElement('em'); tag.textContent = 'Pro'; b.appendChild(tag); }
-        li.appendChild(b); li.appendChild(sp); ul.appendChild(li);
+      if (!ans.clock || !ans.pay || !ans.sched || !ans.away || !ans.locs){ res.hidden = true; return; }
+      var found = [CLOCK[ans.clock], PAY[ans.pay]];
+      if (SCHED[ans.sched]) found.push(SCHED[ans.sched]);
+      if (ans.away === 'no') found.push(AWAY);
+      var pro = ans.sched !== 'none', t = pro ? 'pro' : 'essential', n = +ans.locs;
+      document.getElementById('quizFound').textContent = 'We found ' + found.length + ' problems, and how to fix each one';
+      var ol = document.getElementById('quizFixes'); ol.innerHTML = '';
+      found.forEach(function(x){
+        var li = document.createElement('li');
+        var pr = document.createElement('p'); pr.className = 'pb'; pr.textContent = x[0];
+        var fx = document.createElement('p'); fx.className = 'fx'; fx.textContent = x[1];
+        if (x[2]){ var tag = document.createElement('em'); tag.textContent = 'Pro'; fx.appendChild(tag); }
+        li.appendChild(pr); li.appendChild(fx); ol.appendChild(li);
       });
-      var f = pro && founding, each = f ? FOUNDING.m : PRICES[t].m, total = each * locs;
+      var f = pro && founding, each = f ? FOUNDING.m : PRICES[t].m, total = each * n;
       document.getElementById('quizPlan').textContent = pro ? 'Pro' : 'Essential';
-      document.getElementById('quizTotal').textContent = (locs >= 4 ? 'From ' : '') + '$' + total + ' CAD a month for ' + (locs >= 4 ? '4+ locations' : locs + (locs === 1 ? ' location' : ' locations')) + (f ? ' at the founding price' : '') + ', plus tax. Unlimited employees. Free for 14 days.';
+      document.getElementById('quizTotal').textContent = (n >= 4 ? 'From ' : '') + '$' + total + ' CAD a month for ' + (n >= 4 ? '4+ locations' : n + (n === 1 ? ' location' : ' locations')) + (f ? ' at the founding price' : '') + ', plus tax. Unlimited employees. Free for 14 days.';
       document.getElementById('quizGo').href = 'https://app.sepify.com/signup?plan=' + t;
       res.hidden = false;
       ['essential','pro'].forEach(function(x){ var c = document.getElementById('plan-' + x); if (c) c.classList.toggle('picked', x === t); });
