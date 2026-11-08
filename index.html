@@ -73,56 +73,12 @@
     </div>
     <p class="fine">Free for 14 days, then from $35 CAD per location per month, plus tax · One free trial per business (<a href="https://app.sepify.com/terms" style="color:inherit;text-decoration:underline">terms apply</a>)</p>
     </div>
-    <div class="live" id="live" data-tab="pin" data-phone="list" aria-labelledby="liveDesc">
-      <p class="sr" id="liveDesc">Animation: an employee punches in on the restaurant tablet with a PIN and a face check, the owner sees it on their phone right away, gets an alert when someone scheduled hasn't clocked in, breaks are tracked, and on payday the hours are exported for payroll.</p>
-      <div class="live-clock" aria-hidden="true"><span class="live-dot"></span><b id="liveTime">8:58 AM</b></div>
-      <div class="live-stage" aria-hidden="true">
-        <div class="live-tab">
-          <div class="lt-top"><span>Maple Street Café, Downtown</span></div>
-          <div class="lt-body">
-            <div class="lt-pin">
-              <p class="lt-h">Enter your PIN</p>
-              <div class="lt-boxes"><i></i><i></i><i></i><i></i></div>
-              <div class="lt-keys"><b>1</b><b>2</b><b>3</b><b>4</b><b>5</b><b>6</b><b>7</b><b>8</b><b>9</b><b class="e"></b><b>0</b><b class="e"></b></div>
-            </div>
-            <div class="lt-face">
-              <div class="lt-cam"><span class="c tl"></span><span class="c tr"></span><span class="c bl"></span><span class="c br"></span><svg viewBox="0 0 100 110"><circle cx="50" cy="40" r="17" fill="none" stroke="currentColor" stroke-width="3"/><path d="M20 98c4-18 16-27 30-27s26 9 30 27" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg><span class="scan"></span></div>
-              <p class="lt-sub">Checking it's you</p>
-            </div>
-            <div class="lt-ok">
-              <div class="lt-check"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-              <p class="lt-name" id="liveName">Alex</p>
-              <p class="lt-sub" id="liveStat">Clocked in at 9:00 AM</p>
-              <p class="lt-late">18 min late</p>
-            </div>
-          </div>
-        </div>
-        <div class="live-phone">
-          <div class="lp-notch"></div>
-          <div class="lp-list">
-            <p class="lp-alert"><span class="d"></span><span><b>Sam hasn't clocked in</b><br>Shift started 9:00, 15 min ago</span></p>
-            <p class="lp-k">Downtown, right now</p>
-            <p class="lp-n"><b id="liveCount">0</b> on the clock</p>
-            <ul>
-              <li class="r-alex"><span class="d"></span><span class="nm">Alex</span><span class="st" id="liveAlexSt">since 9:00</span></li>
-              <li class="r-priya"><span class="d"></span><span class="nm">Priya</span><span class="st">since 9:02</span></li>
-              <li class="r-sam"><span class="d"></span><span class="nm">Sam</span><span class="st late">18 min late</span></li>
-            </ul>
-            <p class="lp-empty">No one yet</p>
-          </div>
-          <div class="lp-pay">
-            <p class="lp-k">Pay period, Nov 1 to 14</p>
-            <p class="lp-big">109.5 h</p>
-            <p class="lp-small">Breaks taken out</p>
-            <ol class="lp-hrs"><li><span>Alex</span><b>38.5</b></li><li><span>Priya</span><b>31.0</b></li><li><span>Sam</span><b>40.0</b></li></ol>
-            <span class="lp-btn"><span class="b1">Export for payroll</span><span class="b2">Sent to payroll</span></span>
-          </div>
-        </div>
-      </div>
-      <div class="live-foot">
-        <p class="live-cap" aria-hidden="true"><span data-c="1">Staff punch in with a PIN and a face check.</span><span data-c="2">You see it on your phone, right away.</span><span data-c="5">Late? You get an alert right away.</span><span data-c="3">Breaks take one tap.</span><span data-c="4">Payday: hours already added up.</span></p>
-        <button type="button" class="live-pause" id="livePause" aria-label="Pause animation"><svg viewBox="0 0 24 24" aria-hidden="true"><rect class="ps" x="7" y="6" width="3.2" height="12" rx="1"/><rect class="ps" x="13.8" y="6" width="3.2" height="12" rx="1"/><path class="pl" d="M8 5.5v13l10.5-6.5z"/></svg></button>
-      </div>
+    <div class="herovid">
+      <video id="hero-video" autoplay muted loop playsinline preload="auto" poster="/media/sepify-problem-solution.jpg" width="1080" height="1080" aria-describedby="heroVidDesc">
+        <source src="/media/sepify-problem-solution.mp4" type="video/mp4">
+      </video>
+      <p class="sr" id="heroVidDesc">Video: the problems restaurant owners deal with (paper timesheets nobody can read, staff clocking in for each other, finding out too late that no one showed up, adding up hours by hand on Sunday night), then how Sepify fixes them: a PIN and a face check on the tablet, a text the moment someone is late, and hours that add up on their own with payroll in one click.</p>
+      <button type="button" class="live-pause herovid-pause" id="heroPause" aria-label="Pause video"><svg viewBox="0 0 24 24" aria-hidden="true"><rect class="ps" x="7" y="6" width="3.2" height="12" rx="1"/><rect class="ps" x="13.8" y="6" width="3.2" height="12" rx="1"/><path class="pl" d="M8 5.5v13l10.5-6.5z"/></svg></button>
     </div>
   </section>
 
@@ -867,6 +823,16 @@
   // Product tour: no autoplay for people who ask for less motion; show controls instead.
   var v=document.getElementById('tour-video'); if(!v) return;
   if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches){ v.removeAttribute('autoplay'); v.pause(); v.controls=true; }
+})();
+</script>
+<script>
+(function(){
+  // Hero video: pause button, and no autoplay for people who ask for less motion.
+  var v=document.getElementById('hero-video'), btn=document.getElementById('heroPause'); if(!v||!btn) return;
+  function show(){ var p=v.paused; btn.classList.toggle('is-paused',p); btn.setAttribute('aria-label',p?'Play video':'Pause video'); }
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches){ v.removeAttribute('autoplay'); v.pause(); }
+  btn.addEventListener('click',function(){ if(v.paused){ v.play(); } else { v.pause(); } });
+  v.addEventListener('play',show); v.addEventListener('pause',show); show();
 })();
 </script>
 </body>

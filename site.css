@@ -961,3 +961,11 @@ header.scrolled{background:rgba(255,255,255,.95)!important;box-shadow:0 8px 24px
 .tourvid{margin:0;width:100%;border-radius:20px;overflow:hidden;background:#F3F2EE;box-shadow:0 30px 70px -30px rgba(13,26,19,.35),0 0 0 1px rgba(13,26,19,.06)}
 .tourvid video{display:block;width:100%;height:auto;aspect-ratio:16/9}
 @media (max-width:640px){.tour{padding-block:0 48px}.tourvid{border-radius:14px}}
+
+/* Hero video: problems owners deal with, then how Sepify fixes them (square, loops muted) */
+.herovid{position:relative;width:100%;max-width:540px;margin:0 auto;border-radius:28px;overflow:hidden;background:#F3F2EE;box-shadow:0 30px 70px -30px rgba(13,26,19,.35),0 0 0 1px rgba(13,26,19,.06)}
+.herovid video{display:block;width:100%;height:auto;aspect-ratio:1/1}
+.herovid-pause{position:absolute;right:14px;bottom:14px;opacity:.85}
+.herovid-pause.is-paused .ps{display:none}
+.herovid-pause.is-paused .pl{display:block}
+@media (max-width:640px){.herovid{border-radius:20px}}
