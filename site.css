@@ -954,3 +954,10 @@ header.scrolled{background:rgba(255,255,255,.95)!important;box-shadow:0 8px 24px
 .found-now span{white-space:nowrap}
 .found .r p{color:var(--ink-deep)}
 @media (max-width:520px){.offerbar .ob-more{display:none}.offerbar{flex-wrap:nowrap}}
+
+/* Product tour video (homepage, under the highlights) */
+.tour{padding-block:8px 72px;display:flex;flex-direction:column;align-items:center;gap:22px}
+.tourh{font:700 clamp(24px,3.2vw,34px)/1.15 var(--f-display,Sora,sans-serif);letter-spacing:-.02em;margin:0;text-align:center}
+.tourvid{margin:0;width:100%;border-radius:20px;overflow:hidden;background:#F3F2EE;box-shadow:0 30px 70px -30px rgba(13,26,19,.35),0 0 0 1px rgba(13,26,19,.06)}
+.tourvid video{display:block;width:100%;height:auto;aspect-ratio:16/9}
+@media (max-width:640px){.tour{padding-block:0 48px}.tourvid{border-radius:14px}}
