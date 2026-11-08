@@ -135,6 +135,15 @@
     </ul>
   </section>
 
+  <section class="in tour" aria-labelledby="tour-h">
+    <h2 id="tour-h" class="tourh reveal">See Sepify in 30 seconds</h2>
+    <figure class="tourvid reveal">
+      <video id="tour-video" autoplay muted loop playsinline preload="metadata" poster="/media/sepify-product-tour.jpg" width="1920" height="1080" aria-label="Sepify in 30 seconds: staff clock in with a PIN and face check, managers see who is working live, build the schedule with AI and export hours for payroll.">
+        <source src="/media/sepify-product-tour.mp4" type="video/mp4">
+      </video>
+    </figure>
+  </section>
+
 </div>
 
 
@@ -853,5 +862,12 @@
 })();
 </script>
 
+<script>
+(function(){
+  // Product tour: no autoplay for people who ask for less motion; show controls instead.
+  var v=document.getElementById('tour-video'); if(!v) return;
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches){ v.removeAttribute('autoplay'); v.pause(); v.controls=true; }
+})();
+</script>
 </body>
 </html>
