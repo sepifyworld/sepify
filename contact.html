@@ -231,6 +231,7 @@ footer{border-top:1px solid #1f2320}
 .foot{padding-block:28px 36px;display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center;color:var(--soft);font-size:14px}
 .foot svg{height:20px;width:auto;display:block}
 </style>
+<script src="/analytics.js" defer></script>
 </head>
 <body>
 
@@ -345,7 +346,7 @@ footer{border-top:1px solid #1f2320}
       fetch('/api/contact', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({name:name, business:biz, email:email, message:msg})})
         .then(function(r){ return r.json().then(function(j){ return {ok:r.ok, j:j}; }); })
         .then(function(x){
-          if (x.ok){ f.reset(); show("Thanks, your message is sent. We'll reply to " + email + ' soon.'); }
+          if (x.ok){ if (window.sepifyTrack) sepifyTrack('Contact sent'); f.reset(); show("Thanks, your message is sent. We'll reply to " + email + ' soon.'); }
           else show((x.j && x.j.error) || 'Something went wrong. Please email ' + mail + '.', true);
         })
         .catch(function(){ show('Something went wrong. Please email ' + mail + '.', true); })
