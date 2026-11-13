@@ -35,3 +35,9 @@ Never put keys in the website files. Only in Vercel's settings.
 **Free trial (Nov 2026):** 14 days, card required, one per business; it replaced the 30-day money-back guarantee.
 
 **When the offer changes**, update it in all of these places: the homepage hero line, pricing card and guarantee box, FAQ "How does billing work?", final call to action, the chat chip, the homepage SoftwareApplication offer; `restaurant-time-clock.html` hero line, pricing section and final call to action; and `api/_facts.js`.
+
+## Visitor analytics (Nov 2026)
+- `analytics.js` (loaded on every page) turns on Vercel Web Analytics: page views, referrers, countries, devices. No cookies.
+- Turn it on once in Vercel → Project → Analytics → Enable. Nothing shows until then.
+- Funnel events (Vercel Pro plan only): `Section reached` (tour, face check, pricing, how it works, built for, faq, final call to action), `Get started` (where + plan), `Quiz finished`, `Tour opened`, `Chat opened`, `Chat question`, `Contact click`, `Contact sent`.
+- Add a new event anywhere with `sepifyTrack('Name', { key: 'value' })`.
