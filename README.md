@@ -37,7 +37,13 @@ Never put keys in the website files. Only in Vercel's settings.
 **When the offer changes**, update it in all of these places: the homepage hero line, pricing card and guarantee box, FAQ "How does billing work?", final call to action, the chat chip, the homepage SoftwareApplication offer; `restaurant-time-clock.html` hero line, pricing section and final call to action; and `api/_facts.js`.
 
 ## Visitor analytics (Nov 2026)
-- `analytics.js` (loaded on every page) turns on Vercel Web Analytics: page views, referrers, countries, devices. No cookies.
+- `analytics.js` (loaded on every page) turns on Vercel Web Analytics: page views, referrers, countries, devices. No cookies. **Only loads after the visitor accepts analytics in the consent banner.**
 - Turn it on once in Vercel → Project → Analytics → Enable. Nothing shows until then.
 - Funnel events (Vercel Pro plan only): `Section reached` (tour, face check, pricing, how it works, built for, faq, final call to action), `Get started` (where + plan), `Quiz finished`, `Tour opened`, `Chat opened`, `Chat question`, `Contact click`, `Contact sent`.
 - Add a new event anywhere with `sepifyTrack('Name', { key: 'value' })`.
+
+## Privacy & cookie consent (Nov 2026)
+- `consent.js` (loaded on every page, before analytics.js): the cookie/privacy banner. Reject, Accept and Choose are equal; analytics are off until the visitor says yes (Quebec Law 25 / GDPR style). A browser Global Privacy Control signal counts as "no". The choice is kept 12 months in localStorage `sepify-consent`; bump `CONSENT_VERSION` to ask everyone again.
+- Any link with `data-cookie-settings` reopens the choices (footer "Cookie settings" on every page).
+- `privacy.html` (sepify.com/privacy): website privacy & cookie policy. **Update it whenever you add a tool that collects visitor data** (new analytics, pixels, chat provider, embeds).
+- `fonts/`: fonts are self-hosted (no Google Fonts), so no visitor data goes to Google.
