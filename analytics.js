@@ -1,18 +1,29 @@
 // Visitor analytics (Vercel Web Analytics). No cookies, no personal data.
+// Loads ONLY after the visitor says yes in the consent banner (consent.js). Until then, nothing is
+// sent to Vercel Analytics and sepifyTrack() does nothing.
 // Page views are counted automatically. The events below show how far people get:
 //   Section reached  -> which parts of the homepage they scrolled to
 //   Get started      -> clicked a signup button (where on the page, which plan)
 //   Tour opened, Chat opened, Chat question, Quiz finished, Contact click, Contact sent
 // Custom events show up in Vercel only on the Pro plan; page views work on every plan.
 (function () {
-  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-  var s = document.createElement('script');
-  s.defer = true;
-  s.src = '/_vercel/insights/script.js';
-  document.head.appendChild(s);
+  function allowed() { return !!(window.sepifyConsent && window.sepifyConsent.analytics); }
+  var loaded = false;
+  function load() {
+    if (loaded || !allowed()) return;
+    loaded = true;
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    var s = document.createElement('script');
+    s.defer = true;
+    s.src = '/_vercel/insights/script.js';
+    document.head.appendChild(s);
+  }
+  load();
+  window.addEventListener('sepify:consent', load);
 
   var sent = {};
   function track(name, data, once) {
+    if (!allowed() || !window.va) return;
     var key = name + JSON.stringify(data || {});
     if (once && sent[key]) return;
     sent[key] = true;
