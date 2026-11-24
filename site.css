@@ -65,7 +65,8 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rg
 .links a{text-decoration:none}
 .links a:hover{color:var(--white)}
 .links .btn{height:40px;padding:0 18px;font-size:15px}
-@media (max-width:720px){.links a:not(.btn){display:none}}
+.links a.login{color:var(--white);font-weight:600}
+@media (max-width:720px){.links{gap:16px}.links a:not(.btn):not(.login){display:none}}
 
 /* hero */
 .hero{padding-block:72px 40px;display:flex;flex-direction:column;gap:28px}
