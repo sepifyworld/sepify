@@ -177,9 +177,9 @@
           </ul>
         </div>
         <div class="r">
-          <p class="found-was">Regular price <s>$65</s></p>
-          <p class="found-now"><b>$39</b><span>CAD a month<br>per location</span></p>
-          <p class="found-save">You save $312 a year per location</p>
+          <p class="found-was">Regular price <s id="fWas">$65</s></p>
+          <p class="found-now"><b id="fNow">$39</b><span id="fPer">CAD a month<br>per location</span></p>
+          <p class="found-save" id="fSave">You save $312 a year per location</p>
           <div id="spotsWrap" hidden><div class="spots" id="spots"></div><div class="bar" style="margin-top:8px"><i id="spotsBar"></i></div></div>
           <a class="btn primary" href="https://app.sepify.com/signup?plan=pro">Claim a founding spot</a>
         </div>
@@ -527,6 +527,15 @@
       if (w){ w.hidden = !f; w.textContent = '$' + PRICES[t][k]; }
       per.textContent = (f ? 'founding price · ' : '') + (yearly ? 'CAD per location per year, plus tax' : 'CAD per location per month, plus tax');
     });
+    // founding box follows the same Monthly / Yearly switch
+    var k = yearly ? 'y' : 'm', fw = document.getElementById('fWas');
+    if (fw){
+      fw.textContent = '$' + PRICES.pro[k];
+      document.getElementById('fNow').textContent = '$' + FOUNDING[k];
+      document.getElementById('fPer').innerHTML = (yearly ? 'CAD a year' : 'CAD a month') + '<br>per location';
+      var save = yearly ? PRICES.pro.y - FOUNDING.y : (PRICES.pro.m - FOUNDING.m) * 12;
+      document.getElementById('fSave').textContent = 'You save $' + save + ' a year per location';
+    }
   }
   function set(y){
     yearly = !!y;
