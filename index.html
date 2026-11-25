@@ -166,15 +166,14 @@
       </div>
       <div class="found" id="founding" hidden>
         <div class="l">
-          <p class="found-tag"><span class="gd"></span>Founding offer for the first 20 businesses</p>
-          <h3>Pro for $39 a month. Locked in for as long as you stay.</h3>
+          <p class="found-tag"><span class="gd"></span>Founding offer · first 20 businesses</p>
+          <h3 id="fHead">Pro for $39 a month. Locked in for as long as you stay.</h3>
           <ul>
-            <li>Pro for $39 CAD per location per month, or $390 per year, instead of $65 or $650. Plus tax.</li>
-            <li>Applied automatically when you choose Pro at sign-up. No code needed.</li>
-            <li>Your founding price stays the same when you add locations.</li>
-            <li>Future products and add-ons are charged at their regular price.</li>
-            <li>If you cancel, the founding price ends and can't be restored. The 14-day free trial still applies.</li>
+            <li>Same price for every location you add.</li>
+            <li>No code needed. Just choose Pro at sign-up.</li>
+            <li>14-day free trial first.</li>
           </ul>
+          <p class="found-fine">Plus tax. Add-ons and future products are at regular price. If you cancel, the founding price is gone for good.</p>
         </div>
         <div class="r">
           <p class="found-was">Regular price <s id="fWas">$65</s></p>
@@ -534,6 +533,7 @@
       document.getElementById('fNow').textContent = '$' + FOUNDING[k];
       document.getElementById('fPer').innerHTML = (yearly ? 'CAD a year' : 'CAD a month') + '<br>per location';
       var save = yearly ? PRICES.pro.y - FOUNDING.y : (PRICES.pro.m - FOUNDING.m) * 12;
+      document.getElementById('fHead').textContent = yearly ? 'Pro for $390 a year. Locked in for as long as you stay.' : 'Pro for $39 a month. Locked in for as long as you stay.';
       document.getElementById('fSave').textContent = 'You save $' + save + ' a year per location';
     }
   }
